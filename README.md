@@ -568,3 +568,338 @@ Section 2 Task 3A
  Comparisons
 
  Themes
+
+
+new check
+
+
+Activity 1B — Design & Development Full Detailed Checklist (GLH System)
+
+⸻
+
+0️⃣ Preliminary — Understand the Goal (30–45 min)
+
+What: Activity 1B is about turning your requirements from 1A into a full system design.
+
+Why: Demonstrates your understanding of how the system will work, satisfies assessors, and ensures nothing is missed.
+
+How:
+	1.	Review your Activity 1A output (requirements, user stories, non-functional requirements).
+	2.	Assign IDs to each Functional Requirement (FR1–FR6) and Non-Functional Requirement (NFR1–NFR4).
+	3.	Prepare a traceability table to reference these IDs in all your diagrams, flows, and testing.
+
+Outcome: Clear mapping from requirements → design → testing.
+
+⸻
+
+1️⃣ Requirement Traceability (45–60 min)
+
+What: Table linking requirements → design → diagrams → testing.
+
+Why: Assessors must see every requirement is covered.
+
+How: Create a table like this:
+
+Requirement	Design Component	Diagram / Section	Notes / Link
+FR1 Registration	User account logic	Authentication Flow	Input validation, database insertion
+FR2 Login	Authentication system	Authentication Flow	Password hash, success/failure paths
+FR3 Browse Suppliers	Supplier list page	User Flow / Wireframes	Search, filter, sort options
+FR4 Purchase	Checkout process	Checkout Flow	Stock check, order creation
+FR5 Loyalty	Loyalty points calculation	ERD / Checkout Flow	Points update on order completion
+FR6 Supplier dashboard	Product management	Supplier Flow	Add/edit products, save to database
+NFR1 Security	Password hashing, input validation	Security section	Show prototype feasible steps
+NFR2 Performance	Query optimization	Architecture / ERD	Simple queries for prototype
+NFR3 Accessibility	Readable text, WCAG compliant	Wireframes / User Flow	Labels, contrast
+NFR4 Reliability	Error handling, session management	Authentication / Checkout Flow	Handle invalid inputs
+
+Tips:
+	•	Use IDs consistently in diagrams, flows, testing.
+	•	Explain in text how each diagram addresses a requirement.
+
+⸻
+
+2️⃣ System Architecture (1–1.5 hrs)
+
+What: High-level diagram showing all components and how they interact.
+
+Why: Shows how frontend, backend, database, and APIs work together.
+
+How:
+	1.	Draw boxes for each component: Frontend, Backend, Database, APIs.
+	2.	Connect them with arrows to show data flow.
+	3.	Keep prototype-feasible: locally hosted Flask, SQL database, Stripe for payments, Google Maps for location.
+	4.	Label each component and mention which requirement it satisfies.
+
+Example Diagram:
+
+User Browser
+    |
+Frontend (HTML/CSS/JS)
+    |
+Flask Backend
+    |
++--------------------+
+|                    |
+v                    v
+SQL Database       External APIs
+                  (Stripe, Google Maps)
+
+How to Use: Link components to ERD, flows, testing.
+
+⸻
+
+3️⃣ Database Design / ERD (1–1.5 hrs)
+
+What: Entity-Relationship Diagram showing tables and relationships.
+
+Why: Required for backend functionality, ensures data integrity.
+
+How:
+	1.	Draw boxes for tables: Users, Suppliers, Products, Orders, OrderItems, LoyaltyPoints.
+	2.	List fields in each table, mark PK/FK.
+	3.	Draw arrows FK → PK.
+	4.	Optional: colour-code user/supplier/order tables.
+
+Example ERD:
+
+Users(UserID PK, Email, PasswordHash, Address, Role)
+Suppliers(SupplierID PK, SupplierName)
+Products(ProductID PK, SupplierID FK, Name, Price, Stock)
+Orders(OrderID PK, UserID FK, OrderDate, TotalPrice)
+OrderItems(OrderItemID PK, OrderID FK, ProductID FK, Quantity)
+LoyaltyPoints(UserID FK, Points)
+
+Tips:
+	•	Keep under 10 tables.
+	•	Link each table to FR/NFR.
+	•	Reference this ERD in flows & testing.
+
+⸻
+
+4️⃣ Visual Interface Design / Wireframes (1 hr)
+
+What: Shows user interaction with your system.
+
+Why: Demonstrates usability, accessibility, and layout.
+
+How:
+	1.	Sketch pages: Homepage, Supplier List, Product Page, Checkout, Supplier Dashboard.
+	2.	Annotate: buttons, forms, navigation, accessibility features.
+	3.	Explain why design choices were made.
+
+Wireframe Example (text version):
+
+-----------------------------------------------
+GLH Marketplace
+-----------------------------------------------
+Search Suppliers
+Supplier List
+-----------------------------------------------
+Farm Fresh Produce - View Products
+Organic Valley Farm - View Products
+-----------------------------------------------
+Basket | Account
+
+
+⸻
+
+5️⃣ User Flow / Navigation (30 min)
+
+What: Step-by-step flow of user journey.
+
+Why: Shows how a user moves through the system.
+
+Example:
+
+Home → Browse Suppliers → View Products → Add to Basket → Checkout → Payment → Confirmation
+
+Instructions:
+	•	Rectangles = pages, diamonds = decisions (login success/failure).
+	•	Link flow to wireframes & requirements.
+
+⸻
+
+6️⃣ Authentication Flow (20 min)
+
+What: Shows login/registration logic.
+
+Example:
+
+User enters email/password
+       |
+Frontend validation
+       |
+Flask backend
+       |
+Check Users table
+       |
+Password match?
+  Yes → Login
+  No  → Show error
+
+Instructions:
+	•	Include success/failure paths, password hashing
+	•	Use rectangles for actions, diamonds for decisions
+	•	Link to FR1, FR2, NFR1
+
+⸻
+
+7️⃣ Checkout & Supplier Dashboard Flow (20–25 min)
+
+Checkout Flow Example:
+
+User clicks checkout
+      |
+Verify login
+      |
+Check stock
+      |
+Process payment (Stripe)
+      |
+Payment success?
+   Yes → Create order → Update stock → Add loyalty points
+   No  → Show error
+
+Supplier Flow Example:
+
+Supplier login
+      |
+Open dashboard
+      |
+Add / Edit product
+      |
+Save → Products table
+
+Instructions:
+	•	Use flowchart style: rectangles = actions, diamonds = decisions
+	•	Include only main steps
+	•	Link to ERD and requirements
+
+⸻
+
+8️⃣ API Integration (20–30 min)
+
+What: Stripe (payments), Google Maps (delivery).
+
+Why: Adds functionality and realism without overcomplicating prototype.
+
+How:
+	•	Mention where APIs are called in flows
+	•	Include expected input/output (e.g., Stripe → Payment confirmation)
+
+⸻
+
+9️⃣ Security & Data Protection (40 min)
+
+What: Ensures your system handles data safely.
+
+How:
+	•	Password hashing & input validation
+	•	Session-based login
+	•	Role-based access (Customer/Supplier)
+	•	Local data storage for exam prototype
+
+Link: Authentication flow, ERD, FR2, NFR1
+
+⸻
+
+🔟 Testing Strategy (45–60 min)
+
+Focus: Prototype-feasible, linked to requirements
+
+Table Example:
+
+Requirement	Feature Tested	Test Type	Notes
+FR1 Registration	Account creation	Functional	Test valid & invalid inputs
+FR2 Login	Authentication	Functional	Check hash, success/failure
+FR3 Browse Suppliers	Supplier listing	Usability	Test search/filter
+FR4 Purchase	Checkout	Integration	Stock updates, payment success/failure
+FR5 Loyalty	Points calculation	Database	Check DB update
+FR6 Supplier dashboard	Product management	Functional	CRUD operations
+
+Other Tests:
+	•	Frontend ↔ backend integration
+	•	Database CRUD & FK integrity
+	•	Accessibility & usability
+	•	Error handling & session management
+	•	Performance: page load times (<2s prototype)
+	•	User Acceptance: all Activity 1A requirements met
+
+⸻
+
+1️⃣1️⃣ Technical Specifications (30 min)
+
+What: Explains technology choices and how to implement them.
+
+How:
+	•	Frontend: HTML/CSS (structure & styling), light JS (interaction)
+	•	Backend: Flask handles logic, receives requests, talks to DB & APIs
+	•	Database: SQL tables from ERD
+	•	APIs: Stripe (payments), Google Maps (location)
+	•	Link all specs to diagrams & flows
+	•	Describe how each technology supports requirements
+
+⸻
+
+1️⃣2️⃣ Non-Functional Requirements Mapping (25 min)
+
+NFR	Design Feature	Example / How to implement
+Performance	Fast page load	Use simple SQL queries, lightweight Flask endpoints
+Security	Password hashing	Implement with Flask libraries, check input validation
+Accessibility	Labels, contrast	Annotate wireframes, follow WCAG
+Reliability	Error handling	Handle invalid input, session timeouts
+
+
+⸻
+
+1️⃣3️⃣ Design Justification (30–40 min)
+
+What: Explain your choices clearly.
+
+How:
+	•	Why Flask? Lightweight backend, easy DB/API integration
+	•	Why SQL? Handles structured data (users, orders, products)
+	•	Why ERD & flows? Traceability to requirements, easy testing
+	•	Include alternatives rejected (e.g., heavy JS frameworks)
+	•	Link all choices to FR/NFR and diagrams
+
+⸻
+
+1️⃣4️⃣ Appendices (20 min)
+	•	Rough sketches & early diagrams
+	•	Extended ERD & flows
+	•	Research references
+	•	Standards references (WCAG, GDPR)
+
+⸻
+
+⭐ Priorities
+
+Most important:
+	•	Traceability table
+	•	Architecture diagram
+	•	ERD
+	•	Flow diagrams (Auth, Checkout, Supplier)
+	•	Security & GDPR
+	•	Testing linked to requirements
+
+Less important:
+	•	Extra minor flows
+	•	Long paragraphs
+	•	Features impossible in exam prototype
+
+⸻
+
+⏱ Suggested Order to Complete
+	1.	Traceability table
+	2.	System architecture diagram
+	3.	Database design / ERD
+	4.	Wireframes & user flow
+	5.	Authentication flow
+	6.	Checkout & supplier dashboard flow
+	7.	API integration notes
+	8.	Security & data protection
+	9.	Testing tables + notes
+	10.	Technical specifications
+	11.	Design justification
+	12.	Appendices
