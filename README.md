@@ -903,3 +903,502 @@ Less important:
 	10.	Technical specifications
 	11.	Design justification
 	12.	Appendices
+
+Got it — the issue is GitHub README formatting. You need **proper Markdown code blocks + clearer, more detailed examples** so they render correctly.
+
+Below is your **fixed version** with:
+
+* Proper triple backtick formatting
+* Clean indentation
+* Expanded, *realistic* examples you can copy directly into GitHub
+
+# **Activity 1B — Design & Development Full Detailed Checklist (GLH System)**
+
+---
+
+## **2️⃣ System Architecture**
+
+```text
+[ User Browser ]
+        |
+        v
+[ Frontend (HTML / CSS / JS) ]
+        |
+        v
+[ Flask Backend (Python) ]
+        |
+        v
++-------------------------------+
+|                               |
+v                               v
+[ SQL Database ]         [ External APIs ]
+                         - Stripe API (Payments)
+                         - Google Maps API (Location / Delivery)
+
+DATA FLOW EXPLANATION:
+1. User interacts with frontend (e.g., clicks "Buy")
+2. Frontend sends HTTP request to Flask backend
+3. Flask processes logic (login, order, validation)
+4. Backend queries SQL database (users, products, orders)
+5. If checkout → backend sends request to Stripe API
+6. Stripe returns payment success/failure
+7. Backend updates database (order, stock, loyalty points)
+8. Response sent back to frontend → shown to user
+```
+
+**What this is:**
+A high-level diagram showing all parts of your system and how they connect.
+
+**Why it matters:**
+It proves you understand how a full system works (frontend → backend → database → APIs). This is one of the highest-mark sections.
+
+**How to create it:**
+
+* Draw boxes for each component
+* Draw arrows showing direction of data flow
+* Label everything clearly
+* Keep it simple (don’t overcomplicate)
+
+**What to say in write-up:**
+
+* Explain each component’s role
+* Explain how data moves through the system
+* Link to requirements (e.g., checkout → Stripe → FR4)
+
+---
+
+## **3️⃣ Database Design / ERD**
+
+```text
+TABLE: Users
+- UserID (PK)
+- Email
+- PasswordHash
+- Address
+- Role (Customer / Supplier)
+
+TABLE: Suppliers
+- SupplierID (PK)
+- SupplierName
+
+TABLE: Products
+- ProductID (PK)
+- SupplierID (FK → Suppliers.SupplierID)
+- Name
+- Price
+- Stock
+
+TABLE: Orders
+- OrderID (PK)
+- UserID (FK → Users.UserID)
+- OrderDate
+- TotalPrice
+
+TABLE: OrderItems
+- OrderItemID (PK)
+- OrderID (FK → Orders.OrderID)
+- ProductID (FK → Products.ProductID)
+- Quantity
+
+TABLE: LoyaltyPoints
+- UserID (FK → Users.UserID)
+- Points
+
+RELATIONSHIPS:
+- One User → Many Orders
+- One Order → Many OrderItems
+- One Product → Many OrderItems
+- One Supplier → Many Products
+- One User → One LoyaltyPoints record
+```
+
+**What this is:**
+A structured design of how your data is stored.
+
+**Why it matters:**
+Everything in your system (login, orders, products) depends on the database. This proves your system is logically structured.
+
+**How to create it:**
+
+* Each table = one entity (Users, Orders, Products)
+* Add fields clearly
+* Mark PK (Primary Key) and FK (Foreign Key)
+* Draw relationships between tables
+
+**What to say in write-up:**
+
+* Explain what each table stores
+* Explain relationships (e.g., Orders link to Users)
+* Link to requirements (e.g., FR4 uses Orders + OrderItems)
+
+---
+
+## **4️⃣ Wireframe Design**
+
+```text
+--------------------------------------------------
+|              GLH Marketplace                   |
+--------------------------------------------------
+| Search Suppliers: [______________]            |
+--------------------------------------------------
+| Supplier List                                |
+|----------------------------------------------|
+| Farm Fresh Produce      [View Products]      |
+| Organic Valley Farm     [View Products]      |
+| Green Fields Ltd        [View Products]      |
+--------------------------------------------------
+| Basket | Account                             |
+--------------------------------------------------
+```
+
+**What this is:**
+A simple visual layout of your interface (not detailed design, just structure).
+
+**Why it matters:**
+Shows how users will interact with your system and proves usability + accessibility.
+
+**How to create it:**
+
+* Draw boxes for layout
+* Include buttons, forms, navigation
+* Add labels for everything
+* Keep it simple (no colours needed unless helpful)
+
+**What to say in write-up:**
+
+* Explain user actions (search, click, navigate)
+* Explain accessibility choices (clear labels, readable layout)
+* Link to FR3 (browse suppliers) and FR4 (checkout)
+
+---
+
+## **5️⃣ User Flow**
+
+```text
+START → Home Page
+        |
+        v
+Browse Suppliers
+        |
+        v
+Select Supplier
+        |
+        v
+View Products
+        |
+        v
+Add to Basket
+        |
+        v
+Checkout
+        |
+        v
+Payment
+        |
+        v
+Confirmation → END
+```
+
+**What this is:**
+A simple path showing how a user moves through the system.
+
+**Why it matters:**
+Shows logical structure and supports usability marks.
+
+**How to create it:**
+
+* Use arrows to show steps
+* Keep it linear and clear
+* Add decisions only where necessary
+
+**What to say in write-up:**
+
+* Explain each step
+* Link to wireframes and requirements
+* Show how it leads to checkout (FR4)
+
+---
+
+## **6️⃣ Authentication Flow**
+
+```text
+START
+  |
+User enters Email + Password
+  |
+Frontend validation
+  |
+Send to Flask backend
+  |
+Check Users table
+  |
+Password match?
+  | YES → Login success
+  | NO  → Show error
+  |
+END
+```
+
+**What this is:**
+Logic of login/registration.
+
+**Why it matters:**
+Security is a key requirement (NFR1). This shows how login works.
+
+**How to create it:**
+
+* Show steps in order
+* Include decision (match or not)
+* Include validation
+
+**What to say in write-up:**
+
+* Explain validation and password hashing
+* Link to Users table
+* Link to FR1 and FR2
+
+---
+
+## **7️⃣ Checkout Flow**
+
+```text
+START
+  |
+User clicks Checkout
+  |
+Check login
+  |
+Check stock
+  |
+Process payment (Stripe)
+  |
+Payment successful?
+  | YES → Create order → Update stock → Add points
+  | NO  → Show error
+  |
+END
+```
+
+**What this is:**
+Full process of buying a product.
+
+**Why it matters:**
+This is the core system feature (FR4 + FR5).
+
+**How to create it:**
+
+* Show key steps only
+* Include decisions (login, payment)
+* Link to database actions
+
+**What to say in write-up:**
+
+* Explain each step
+* Link to ERD (Orders, Products, LoyaltyPoints)
+* Link to Stripe API
+
+---
+
+## **7️⃣ Supplier Dashboard Flow**
+
+```text
+START
+  |
+Supplier login
+  |
+Open dashboard
+  |
+Add / Edit / Delete product
+  |
+Save to database
+  |
+END
+```
+
+**What this is:**
+Shows how suppliers manage products.
+
+**Why it matters:**
+Covers FR6 and proves multi-user system functionality.
+
+**How to create it:**
+
+* Show main actions only
+* Link to Products table
+
+**What to say in write-up:**
+
+* Explain CRUD operations (Create, Read, Update, Delete)
+* Link to database and requirements
+
+---
+
+## **8️⃣ API Integration**
+
+```text
+STRIPE API:
+- Used in checkout
+- Input: payment details
+- Output: success / failure
+
+GOOGLE MAPS API:
+- Used for delivery location
+- Input: address
+- Output: location data
+```
+
+**What this is:**
+External services your system connects to.
+
+**Why it matters:**
+Shows realism and technical understanding.
+
+**How to explain it:**
+
+* Mention where API is used in flows
+* Explain what data goes in and out
+
+**What to say in write-up:**
+
+* Stripe used in checkout (FR4)
+* Maps used for delivery
+* Keep it simple (no deep implementation needed)
+
+---
+
+## **🔟 Testing Strategy**
+
+```text
+| Requirement | Test | Input | Expected Output |
+|------------|------|------|----------------|
+| FR1 | Register | Valid data | Account created |
+| FR2 | Login | Correct login | Success |
+| FR4 | Checkout | Valid order | Order created |
+| FR4 | Checkout | No stock | Error |
+| FR5 | Loyalty | Purchase | Points added |
+| FR6 | Add product | Valid input | Saved |
+```
+
+**What this is:**
+Plan to test your system.
+
+**Why it matters:**
+Shows your system actually works and meets requirements.
+
+**How to do it:**
+
+* Link each test to a requirement
+* Include input and expected output
+* Keep it realistic (prototype level)
+
+**What to say in write-up:**
+
+* Explain test types (functional, usability, integration)
+* Show coverage of all requirements
+
+---
+
+## **1️⃣1️⃣ Technical Specifications**
+
+```text
+FRONTEND:
+- HTML → structure
+- CSS → styling
+- JS → interaction
+
+BACKEND:
+- Flask → handles logic
+
+DATABASE:
+- SQL → stores data
+
+APIs:
+- Stripe → payments
+- Maps → delivery
+```
+
+**What this is:**
+Explanation of technologies used and how they work together.
+
+**Why it matters:**
+Shows technical understanding and links design to implementation.
+
+**How to write it properly (this is where most people lose marks):**
+Instead of listing, you must explain:
+
+* What each technology does
+* Where it is used in your system
+* How it connects to other parts
+
+**Example explanation:**
+
+* HTML creates pages like login, product list
+* Flask processes login and checkout requests
+* SQL stores users, products, orders
+* Stripe handles payment in checkout
+
+**Link everything:**
+
+* Frontend → sends request
+* Backend → processes
+* Database → stores data
+* API → external processing
+
+---
+
+## **1️⃣2️⃣ Non-Functional Requirements Mapping**
+
+```text
+Performance → Fast loading pages (simple queries)
+Security → Password hashing + validation
+Accessibility → Clear labels, readable UI
+Reliability → Error handling
+```
+
+**What this is:**
+How your system meets quality requirements.
+
+**Why it matters:**
+Shows depth beyond just functionality.
+
+**How to explain:**
+
+* Give one clear example per NFR
+* Link it to your design (flows, wireframes, backend)
+
+---
+
+## **1️⃣3️⃣ Design Justification**
+
+**What this is:**
+Explaining *why* you made your decisions.
+
+**Why it matters:**
+This is where top marks come from.
+
+**How to do it:**
+For each major choice, explain:
+
+* What you chose
+* Why you chose it
+* What alternative you could have used
+
+**Example:**
+
+* Flask chosen because lightweight and easy for prototypes
+* SQL chosen for structured data
+* Simple frontend used instead of React to reduce complexity
+
+---
+
+## **1️⃣4️⃣ Appendices**
+
+**What to include:**
+
+* Rough diagrams
+* Early ideas
+* Research links
+* Extended versions of diagrams
+
+**Why it matters:**
+Supports your work without cluttering main sections.
