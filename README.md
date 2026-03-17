@@ -1597,3 +1597,560 @@ It satisfies:
 - Usability – clear dashboard navigation
 - Reliability – consistent data updates
 - Security – restricted access to suppliers
+
+
+
+Perfect — I’ll give you consistent, exam-ready write-ups for every key diagram, all in the same structure so you can just copy into your document.
+
+Each one includes:
+	•	What it is
+	•	What it shows (your system specifically)
+	•	Why it’s included (marks)
+	•	Traceability links
+
+⸻
+
+🏗️ 1. SYSTEM ARCHITECTURE DIAGRAM WRITE-UP
+
+The system architecture diagram provides a high-level overview of how the GLH system is structured. It illustrates the relationship between the client side (user interface), the server side (Flask backend), and the database (SQL).
+
+Users interact with the system through a web interface built using HTML and CSS, with light JavaScript for interactivity. Requests from the client are sent to the Flask backend, which processes logic such as authentication, order handling, and product management. The backend communicates with the SQL database to store and retrieve data including users, products, and orders.
+
+External integration is shown through the payment system (Stripe), which is used during checkout to securely process transactions.
+
+This diagram is included to clearly define system components, data flow, and responsibilities. It ensures the design is structured, scalable, and aligned with the technical requirements identified in Activity A.
+
+This links to:
+- FR1: User authentication
+- FR2: Product browsing
+- FR3: Checkout system
+- FR7: Supplier product management
+- Database design (ERD)
+- API integration (Stripe)
+
+
+⸻
+
+🔐 2. AUTHENTICATION FLOW DIAGRAM WRITE-UP
+
+The authentication flow diagram illustrates the process a user follows to log into the system. It begins with the user entering their email and password, which is then sent to the Flask backend for validation.
+
+The system retrieves the corresponding user record from the database and compares the entered password with the stored value. If the input is invalid or the credentials do not match, the user is shown an error message and prompted to try again. If successful, the user is granted access to the system.
+
+This diagram demonstrates input validation, decision-making, and error handling, ensuring the system is secure and user-friendly.
+
+It is included to clearly show how authentication is handled and how user data is verified within the system.
+
+This links to:
+- FR1: User login
+- Users table (ERD)
+- Security requirements (input validation and access control)
+- Flask backend logic
+
+
+⸻
+
+🛒 3. CHECKOUT FLOW DIAGRAM WRITE-UP
+
+The checkout flow diagram represents the process a user follows to purchase products. It begins with the user viewing their basket and proceeding to checkout, where they select delivery or collection and enter required details.
+
+The system validates the input before sending the request to the Flask backend. The backend processes the order and integrates with the Stripe payment system to handle the transaction. If the payment is unsuccessful, the user is prompted to retry. If successful, the order is stored in the database and loyalty points are updated.
+
+A confirmation is then displayed to the user.
+
+This diagram is included to demonstrate how multiple system components interact, including user input, backend processing, database updates, and external API integration.
+
+This links to:
+- FR3: Checkout and payment
+- FR4: Delivery/collection selection
+- FR5: Loyalty scheme
+- Orders and Products tables (ERD)
+- Stripe API integration
+
+
+⸻
+
+🏪 4. SUPPLIER DASHBOARD FLOW WRITE-UP
+
+The supplier dashboard flow diagram illustrates how suppliers manage products within the system. After logging in, the supplier gains access to the dashboard where they can add, edit, or delete products.
+
+When adding a product, the supplier enters product details which are validated before being stored in the database. Editing allows updates to existing product information, while deletion removes products after confirmation.
+
+This process ensures that product data remains accurate and up to date while preventing errors through validation and confirmation steps.
+
+The diagram is included to show how suppliers interact with the system and how product data is managed through the backend and database.
+
+This links to:
+- FR7: Supplier product management
+- Products table (ERD)
+- Flask backend processing
+- Data validation rules
+
+
+⸻
+
+🎭 5. USE CASE DIAGRAM WRITE-UP
+
+The use case diagram represents the interactions between different actors and the GLH system. The primary actors include the user, supplier, and the external payment system (Stripe).
+
+Users can perform actions such as registering, logging in, browsing products, and completing purchases. Suppliers are responsible for managing products through the dashboard. The Stripe payment system is included as an external actor to process transactions during checkout.
+
+The diagram defines the system boundary and clearly shows which functionalities are available to each actor. Relationships such as <<include>> are used to show that checkout always involves payment processing.
+
+This diagram is included to provide a clear overview of system functionality and ensure all user requirements are represented.
+
+This links to:
+- All functional requirements (FR1–FR7)
+- System architecture (external integrations)
+- User roles and permissions
+
+
+⸻
+
+🗄️ 6. ENTITY RELATIONSHIP DIAGRAM (ERD) WRITE-UP
+
+The entity relationship diagram (ERD) defines the structure of the database used in the GLH system. It identifies key entities such as Users, Products, Orders, and OrderItems, along with their attributes and relationships.
+
+For example, a user can have multiple orders, and each order can contain multiple products. These relationships are represented using primary and foreign keys to maintain referential integrity.
+
+The ERD ensures that data is organised efficiently and supports all required system functionality, including authentication, product management, and order processing.
+
+This diagram is included to provide a clear blueprint for database implementation and ensure consistency in data storage.
+
+This links to:
+- FR1: User accounts
+- FR2: Product browsing
+- FR3: Orders and checkout
+- Supplier product management
+- Data validation and integrity requirements
+
+
+⸻
+
+🔄 7. DATA FLOW DIAGRAM (DFD) WRITE-UP
+
+The data flow diagram (DFD) illustrates how data moves through the GLH system. It shows how user inputs are processed by the system and how data is stored and retrieved from the database.
+
+At a high level, users provide inputs such as login details or order requests, which are processed by the Flask backend. The system interacts with data stores such as the Users and Orders tables, and outputs results such as confirmations or error messages.
+
+This diagram helps visualise how different components interact and ensures that all data processes are clearly defined.
+
+It is included to demonstrate system logic, data movement, and interaction between processes and data stores.
+
+This links to:
+- Authentication flow
+- Checkout process
+- Database design (ERD)
+- System architecture
+
+
+⸻
+
+⚙️ 8. PROCESS / ALGORITHM (PSEUDOCODE / FLOWCHART) WRITE-UP
+
+The process diagrams and pseudocode describe the internal logic of key system functions, such as authentication and order processing. They outline step-by-step how inputs are handled, processed, and converted into outputs.
+
+These representations include validation, decision-making, and error handling to ensure the system behaves correctly under different conditions.
+
+The use of pseudocode ensures the logic is clear and can be easily translated into code using Python and Flask.
+
+This is included to demonstrate detailed understanding of how the system operates internally.
+
+This links to:
+- Backend implementation (Flask)
+- Authentication and checkout flows
+- Data validation rules
+- Functional requirements
+
+
+⸻
+
+🧪 9. TESTING STRATEGY WRITE-UP
+
+The testing strategy outlines how the GLH system will be verified to ensure it meets both functional and non-functional requirements. Testing includes functionality testing to ensure features such as login and checkout work correctly, and usability testing to confirm the interface is easy to use.
+
+Validation testing is used to check that inputs such as email and product details are handled correctly, while error handling ensures the system responds appropriately to invalid data.
+
+Testing is carried out locally due to the system being developed in an exam environment, focusing on core functionality rather than deployment-based testing.
+
+This is included to ensure the system is reliable, secure, and meets user expectations.
+
+This links to:
+- All functional requirements
+- Error handling in flow diagrams
+- User interface design
+- System reliability
+
+
+⸻
+
+🔗 ✅ FINAL TIP (IMPORTANT)
+
+After all diagrams, add a short linking sentence like:
+
+All diagrams work together to represent different aspects of the system, from high-level structure (architecture) to detailed logic (flowcharts and pseudocode). Each diagram is directly linked to the functional and non-functional requirements identified in Activity A, ensuring full traceability throughout the design process.
+
+
+⸻
+
+If you want next, I can:
+👉 Check your actual diagrams + write-ups together (this is where people jump from merit → distinction)
+
+
+
+## 🧪 Test Plan — GLH System
+
+---
+
+### 🎯 Purpose of Testing
+
+The purpose of testing is to make sure the GLH system works correctly, safely, and reliably in all situations. This includes normal use, incorrect use, and extreme cases. The system must also be secure and accessible to a wide range of users.
+
+Testing will check:
+- Whether features behave as expected (functional behaviour)
+- Whether internal logic works correctly (validation and processing)
+- Whether the system handles invalid or malicious input safely
+- Whether all features remain usable under accessibility conditions
+- Whether the system works across different browsers and devices
+
+---
+
+### 🧩 Overall Testing Approach
+
+A combination of testing methods will be used to fully cover the system:
+
+- **Black Box Testing**: testing inputs and outputs without looking at the code  
+- **White Box Testing**: testing internal logic, conditions, and code paths  
+- **Unit Testing**: testing individual functions (e.g. login validation)  
+- **Integration Testing**: testing how components work together  
+- **Functional Testing**: testing full features from a user perspective  
+- **Security Testing**: testing protection against malicious input  
+- **Accessibility Testing**: ensuring usability for all users  
+
+Each feature is tested using multiple methods to ensure full coverage.
+
+---
+
+### 🧑‍💻 Test Environment
+
+Testing will be carried out using:
+- Local Flask server (due to exam constraints)
+- Browsers: Chrome, Edge, Firefox
+- Devices: Desktop and mobile (using browser developer tools)
+
+---
+
+## 🔐 Authentication Testing
+
+### Functional & Black Box Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| AUTH01 | Valid login | Enter correct credentials | User logs in successfully |
+| AUTH02 | Invalid password | Enter wrong password | Error message displayed |
+| AUTH03 | Empty fields | Submit blank form | Submission prevented |
+| AUTH04 | Invalid format | Enter random text | Validation error shown |
+
+---
+
+### White Box Testing (Internal Logic)
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| AUTH05 | Password comparison logic | Trace code execution | Correct comparison made |
+| AUTH06 | Validation conditions | Test all branches (if/else) | All paths executed correctly |
+| AUTH07 | Error handling | Force invalid input paths | Correct error returned |
+
+---
+
+### Unit Testing
+
+| Test ID | Component | Method | Expected Result |
+|--------|----------|--------|----------------|
+| AUTH08 | Login function | Pass valid/invalid inputs | Correct output returned |
+| AUTH09 | Input validation | Test invalid formats | Returns false |
+
+---
+
+### Integration Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| AUTH10 | Frontend → Flask | Submit login form | Data received correctly |
+| AUTH11 | Flask → Database | Query user details | Correct data returned |
+
+---
+
+### Security Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| AUTH12 | SQL injection | Enter `' OR 1=1 --` | Query not executed |
+| AUTH13 | Script injection | Enter `<script>` | Not executed |
+
+---
+
+### Extreme Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| AUTH14 | Very long input | 500+ characters | System handles safely |
+| AUTH15 | Rapid submissions | Spam login button | System remains stable |
+
+---
+
+## 🛒 Product & Basket Testing
+
+### Functional Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| PRD01 | Add product | Click add button | Item added to basket |
+| PRD02 | Remove product | Click remove | Item removed |
+| PRD03 | Update quantity | Change value | Basket updates |
+
+---
+
+### Validation & Black Box Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| PRD04 | Negative quantity | Enter -1 | Blocked |
+| PRD05 | Zero quantity | Enter 0 | Item removed |
+| PRD06 | Text input | Enter letters | Rejected |
+
+---
+
+### White Box Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| PRD07 | Quantity logic | Trace calculation code | Correct totals |
+| PRD08 | Basket storage | Inspect session/database | Accurate data |
+
+---
+
+### Extreme Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| PRD09 | Large quantity | Enter 1000 | System remains stable |
+| PRD10 | Rapid clicks | Spam add button | No duplication errors |
+
+---
+
+### Integration Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| PRD11 | UI → Backend | Add item | Data passed correctly |
+| PRD12 | Backend → DB | Save basket | Stored correctly |
+
+---
+
+## 🛒 Checkout Testing (High Priority)
+
+### Functional Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| CHK01 | Complete checkout | Full process | Order created |
+| CHK02 | Delivery selection | Choose option | Stored correctly |
+| CHK03 | Collection option | Select option | Stored correctly |
+
+---
+
+### Validation Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| CHK04 | Missing address | Leave blank | Error shown |
+| CHK05 | Invalid format | Enter random data | Rejected |
+| CHK06 | Empty basket | Attempt checkout | Blocked |
+
+---
+
+### White Box Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| CHK07 | Validation logic | Trace code paths | Correct conditions used |
+| CHK08 | Order creation logic | Follow process | Runs once only |
+
+---
+
+### Integration Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| CHK09 | Frontend → Flask | Submit order | Received |
+| CHK10 | Flask → DB | Save order | Stored |
+| CHK11 | Flask → Payment API | Send request | Processed correctly |
+
+---
+
+### Extreme Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| CHK12 | Long inputs | Paste large text | Handled |
+| CHK13 | Duplicate submissions | Spam button | Only one order created |
+
+---
+
+### Security Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| CHK14 | Data tampering | Modify request | Rejected |
+| CHK15 | Script injection | Insert code | Blocked |
+
+---
+
+## 🏪 Supplier Dashboard Testing
+
+### Functional Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| SUP01 | Add product | Submit form | Product saved |
+| SUP02 | Edit product | Update data | Changes saved |
+| SUP03 | Delete product | Remove item | Deleted |
+
+---
+
+### White Box Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| SUP04 | Validation logic | Trace code | Works correctly |
+| SUP05 | Database updates | Inspect queries | Accurate |
+
+---
+
+### Extreme Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| SUP06 | Long inputs | Large product name | Handled |
+| SUP07 | Rapid edits | Repeat actions | Stable |
+
+---
+
+### Integration Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| SUP08 | UI → Backend | Submit product | Passed correctly |
+| SUP09 | Backend → DB | Save product | Stored |
+
+---
+
+## 🎁 Loyalty System Testing
+
+| Test ID | Test Description | Method | Expected Result |
+|--------|----------------|--------|----------------|
+| LOY01 | Earn points | Complete order | Points added |
+| LOY02 | View points | Open account page | Correct value shown |
+
+---
+
+## ♿ Accessibility Testing (WITH FUNCTIONAL CHECKS)
+
+### 🎨 Contrast Testing
+
+| Test ID | Method | Expected Result |
+|--------|--------|----------------|
+| ACC01 | Visually inspect UI | Text is readable |
+| ACC02 | Reduce brightness | Still readable |
+| ACC03 | Use system normally | All buttons/forms still work |
+
+---
+
+### ⌨️ Keyboard Navigation
+
+| Test ID | Method | Expected Result |
+|--------|--------|----------------|
+| ACC04 | Navigate using TAB | Logical order |
+| ACC05 | Complete checkout with keyboard | Fully usable |
+| ACC06 | Submit forms via keyboard | Works correctly |
+
+---
+
+### 🌓 High Contrast Mode
+
+| Test ID | Method | Expected Result |
+|--------|--------|----------------|
+| ACC07 | Enable OS high contrast | UI remains visible |
+| ACC08 | Fill forms | Still usable |
+| ACC09 | Navigate system | All features still function |
+
+---
+
+## 🌐 Compatibility Testing
+
+### Browsers
+
+| Test | Method | Expected Result |
+|------|--------|----------------|
+| Chrome | Full system test | Works correctly |
+| Edge | Repeat tests | Works correctly |
+| Firefox | Repeat tests | Minor differences acceptable |
+
+---
+
+### Devices
+
+| Test | Method | Expected Result |
+|------|--------|----------------|
+| Desktop | Full usage | Works |
+| Mobile | Responsive mode | Layout adjusts correctly |
+
+---
+
+## ⚡ Performance Testing
+
+| Test ID | Method | Expected Result |
+|--------|--------|----------------|
+| PER01 | Load pages repeatedly | Fast load times |
+| PER02 | Use basket repeatedly | No lag |
+| PER03 | Complete checkout | Smooth process |
+
+---
+
+## 🔐 Security Testing
+
+| Test ID | Method | Expected Result |
+|--------|--------|----------------|
+| SEC01 | Attempt restricted access | Blocked |
+| SEC02 | Enter malicious input | Handled safely |
+| SEC03 | Modify URLs | Access denied |
+
+---
+
+## 🧠 Usability Testing
+
+| Test ID | Method | Expected Result |
+|--------|--------|----------------|
+| USE01 | First-time user test | Easy to use |
+| USE02 | Navigation test | Logical structure |
+| USE03 | Checkout process | Simple and clear |
+
+---
+
+## 🔗 Traceability
+
+All tests link back to requirements:
+
+- Authentication → Login system  
+- Product/Basket → Shopping functionality  
+- Checkout → Order processing  
+- Supplier Dashboard → Product management  
+- Loyalty System → Rewards feature  
+
+---
+
+### 🏁 Summary
+
+This testing plan uses a range of testing methods to fully test the system.  
+It ensures the system is functional, secure, accessible, and reliable in different scenarios.
