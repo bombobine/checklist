@@ -1408,3 +1408,192 @@ https://drive.google.com/file/d/1tIi9o9VvFf6sR2rZsW0QwPuymkEscfJz/view?usp=drive
 https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22q4aO2UeqhXNvvycsipGC%22%3E3VrbcuI4EP0aqnYfkpJtDOYxISFJVVLDDEnNzKNiC9AgLK8sE5iv35Yt3yFDwDjsviSmZV18uvu4dayONVyu7wQO5k%2FcI6xjIm%2FdsW46ptlDPfirDJvEYBqOlVhmgnqJzcgNE%2FqbaCPS1oh6JCzdKDlnkgZlo8t9n7iyZMNC8LfybVPOyrMGeEZqhomLWd36nXpynlgds5%2Fb7wmdzdOZjd4gaVni9Gb9JOEce%2FytYLJuO9ZQcC6Tq%2BV6SJgCL8Ul6Tfa0ZotTBBf7tMhcuyX6a%2Fh%2BvtocfsQ3H257n99vtCjEK%2BGQj6sNoU8Ei55Zyxb3yc3KXiCR75H1PyoY11zIed8xn3MHjkPwGiA8ReRcqPdjiPJwTSXS6ZbyZrKH4Xrn4Xrm7UeN%2F6xSX%2F4UmxUF3Rppz9%2FFtvybvGvtJ8OLSxmRL7zjE7mOIh4wpcExoB%2BgjAs6aqMIdahN8vuy70DF9pBH3CWWQp1%2FJrCjOo%2Be8%2FZBQcpvz%2FiV8jZEuyY0ZkP1y6MRwQYVkRICklxpRuW1PPUGNeChPS3XomCMeDUl%2FFz29cd%2ByYDdoVZpOcc481SrdNE38g%2FEQmlvgOmIOsCgHuirLtcoEuzr5Ny80c36LHHarWFW%2Fh0GhJZ81O2hMNdZ%2F038kwnjc40tGemlfIsT7vjMs2wPzPVukemmnUWqca4C1hxP4at0VxDZt86o%2FSyd2fTrix5m1NJJgGOU%2B0NipeyX2pYdsweg6GvPbqCy5m6vMbugvhe2gIrLzSON5CFCvkRw%2BFiS%2B9HPqOuQkeNkHJhuH2wvd02L9QiPR2sb3ndYqQBnNZnFipRpuWgEyVUr0ECdE5IgIcUGmap0jCa4b9Ppb%2F%2BkfTXOwv6yysN6BxwPySN0B%2Bwn2Wdb6nhnJ4LJ1LQAMBEV%2BOHLcyW4x4I7pIwpP6sXV7r98u8Zpv2iTJlcHq0R4JDcuTvmQJ%2B989Pjx0TVo6Gk0m7EFt2W68OYwvrNI3xSwjsU8d3GIUSngKaRpMoCBjN72oHZac1kJtUAlKPFfnf966UHKO4HgqiEEqfkkfK7tu278%2F3Jp%2ByHxlsqQj%2F5OA0Rba%2BTQpet9%2FxauX9kWZfr0Jw1SESH%2BleRVWoMlDXqAyEKgMlwNQGauptZRwtapyHqpEQCHrwg0ih%2B9erkh7hFTlyGXUXfzdSeKh918CySv5KRaGzKD0Mq4Xa4yu88dANhlDBCuAaZytPhMlLcSy4F7lS%2F%2FoivLilTf4eoNYIvNsC9ude9xnVqsTunQzvFjSHO85nTOH9hINwJ%2ByPmcozuiEMuEM9XavV9qAMunk60JuUEQbHFikHFhyHFDd7Fin2WRUp3Yq61KvGxd5FSqUM7hktFynH6iHGeQgi98%2FP407j312Q49jlmqT70Uip6CcnrFCcBgmk%2FiGmGQIxD2MQsxEKSWu4M%2BGQfvWFPjiQQ5xKJWZ3W%2BaQwbEcUpe9P4NDvkZxfYEUQCZ6CTwsVYUC%2F3BThGKgQVlevdhfX22bUFL3NaObbPlseBijGGVG6e%2FLKKjEKP3%2FYVHidMs80D1UOXEqVW%2B3ZeWkcvLp44SSHUz6XEL5RmQkfL2nb6wmMZBxKIW0QBrmbo7InQEQyB2bxhqId4%2F3YMg1atgxigWRAVPdoGETSrJUO0jhquFcgHz%2Fj2HFxOzWt4OZSL1Dm7yoVuvNHYjaS2%2FSOBbieRukoRR8QYaccQjwG5%2F7KpynlLGK6QO5UKLmmsue51Tt6cPUNVFI1G%2BXQRRehESsYj%2FigsMu4ffzXPlzmn0SUsLWa0SZjH0CLjFR8lFInyuIvwshzJg6CRlPoiQwJLnqpzVKFOq4CbNugVbOLnUf1eAqkSFecjwz0rsJkZ1cSEaNy4FpcugBrV7TMxIIQHfV8uYwA4sflekTEIwuVB8cyTmASlM1Qz0aV5pd2imWkxCR7uUWFSQBJp%2FO5ctl5KvB4rk0NlgRTSIhepmEmKw7lFyQDAABAUrJKi9tEPVdFnnJGqJcYwxKGmPSOV51jN3tGoLExyqSr8YPMb7xJOBjMhOwNi%2BdHoI0Wfg08mOkIdAkZNCVuiF%2BtrL6hqj2ZzZCSFwIErbpZPpbnBqxJqcuvUgkq3fnxF1wpVMPE7%2FEGlMyyVbJKQ4QLpJRMokJFY4XqXilMOVlg8qTVacaa1Cmmm6Fanrv1QM7qKajPrCmh3AThs%2BPMlu3%2FwI%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
 
 https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22XGUZXHA9vvQbGinrVQvj%22%3E3Vpbd9o4EP41nNN9aI8vGPAjl9x66IZTc7rZR8UWRsG2WFnc%2Bus7siVjYUicAoHuUzTjkSzNN%2FPNyKFh9%2BP1HUPz6Tca4KhhGcG6YQ8almU22wb8EZpNrrHaShMyEkirrcIjP7FUKrMFCXCqGXJKI07mutKnSYJ9rukQY3Slm01opL91jkJcUXg%2Biqraf0jAp7m2Y7W3%2BntMwql6s9ly8ycxUsbyJOkUBXRVUtk3DbvPKOX5KF73cSS8p%2FySz7s98LTYGMMJrzPhaTIbPvhfX1o%2FurPxy9CNB3P6ec8qUpXyjfIBx2t41pvyOAKFCcPVlHDszZEvLFYAPehSzugM92lEGSgTmsCz3oRE0Y4KRSRMQPThjRj0vSVmnIDHu%2FJBTIJAvLrH6CIJsNi%2BIZaiCZfxYTVBzre5RNFCbrM7ehDHhVVDhjihiYg7gkCIpS28CK9Lp5SOusM0xpxtwGRawrIjgVttcS%2FCUq3SkvJGBbyUkQy7sFh6iwwMJDjvAKqTr4uDSrhWkaML5uNX1rIqCItlPSlKmPwFW2a%2BNytIUManNKQJioaUzqXJC%2BZ8I%2FFBC071gMFrwp9K43%2FlUmI8WJeFjRIScNtTWcjmfHGUuJ2WSZs9YWJkYYmYUnQy66AkSUZBLMT8FY%2FZ%2B6OF4QgCbakjcnLoTUujOPSsUDOqIfBa7OzgPUTPQNYaSu9ITZySn3InwstzCnmXHdzpNZyBjgMcYE%2B6NqxWJGglIEsYhmJ4Px6PwGj06I3hz6ev3uPffykzcF3Jcs%2FkEdrEwg%2BWMUAcifl9xIKGBU43ujEEMM%2FHjyyAs1nGw%2BDg2jXJYi%2F8corxxbBc53BEyNVGwm8lPtEn0MkkhbjcDaBiC78fU1Yd3tezfh%2Fnl2JnN%2B%2Fq4K1Uz0pxN7yHST3kzyBNBYS3EUpnZZyed%2Be%2BGRfFS9i7p96jBMI9FQGU1Zbv%2BL8FTrlQoGx%2FvUVKEpwKxZCGxD8yoMrVpygt5fLT1suPrVcfu3Wu6mM6Jyw%2F9pWUn7yUnLMAZcR3kgLUvGQBsi9HFkW6e5yROVaZeJgOtlm%2BrQcjRn1IUpKEv5eJRjUTzY6eiY67k4rWuVKxeRXMXcDhYchTltam1Js1dBaQugKWAiBvk3Icn5A83T2IuTpibvOjEDNP2bs7lyNPxZA5DVo12dPU2bN9Efq0Ltq%2Fu0f27%2BYf08APqa9u3nkTXpMV%2BpSygCSIZ82WcLdl%2FIDDBHK1s7Xpn6FPN9UFq0af%2FgGdufH%2FYIs%2FttVqXZIrnKuo7tV7GaVhJMr9NzQvrkNH3MlKPCEaCOLjgx3Eiar%2FG%2F1a0zlX9W9dBaK7AL63bQNPR%2FW4%2FWO6tfPhZZ6Sf6%2FkS6sav8W%2BohbqDNzKePU1Ds6kEWYE3C9ajvMRs3PRJq59bBNn7I2FK2zi5FfYu5txbXroBgHLP4PlvduIptynAT5z5%2Ba4rsYK6kvFVTRypn1CIrngN7Pyta82kQAwGo%2FYzUJxcR657GWweSyP7A%2BFK%2BSR7fed7zid0yQ9SAeVqZ%2B8he%2BXCeUWkWjB8Hn%2FY2OarZbOJx9zMQRx%2BzOA3Hz7awr75hc%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.drawio&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22TSn0qL9XLZpnICiXX75k%22%3E3VtZk6M2EP41rkoexsXl63F8zGSrdqs26z2y%2ByaDbJQB5EjCR3591CAMGOxhbDCevIxRo5bE1%2Fqk7pamY0783TNDa%2FcTdbDXMTRn1zGnHcMwLEOXPyDZxxLd1JRkxYijZKlgTv7FSqgpaUgczHMVBaWeIOu80KZBgG2RkyHG6DZfbUm9fK9rtMIFwdxGXlH6gzjCjaVDY5DK%2F8Bk5SY96%2F1R%2FMZHSWX1JdxFDt1mROasY04YpSJ%2B8ncT7AF6CS6x3tOJt4eBMRyIKgrL7x9%2BPQ%2Bnv2bfXn64%2BiQgmvP1oaQVJeJin2Ag25Fwy8J46xKB52tkw5utNLmUucL3ZEmXj7HmBnmh0pwLxISSYibwLtOFGuUzpj4WbC%2BruBkgewq1bQq6niCpWjGTcjq3lN2VzVeHplNY5INC5g0oJZhgpzBZirjRkNn4TGNmAV9Gw8DBMABNgkiZcOmKBsj7SOlaIfs3FmKv2IFCQfO44x0Rf4F6t6dKPzNvpjvVclTYJ4VAIpNRguLP7LtULSoleoqDiK2wOPOVvXITM%2BwhQTZ5FGu3l1llVks%2BruFR1kKehz26YsjP48oFoy8H3svvGa8xI3KMmB0rfk5flLIktTE0jJitjKlDqzx%2B1rqGWcaib1w2a2izQDbPO0bfk980dshGPq5EpNBHPnQSLDj8zHxEAKODPP6baEpI88qvtfcZcb6lzDnVwAX0Hryd3obWFL31YY307jVI7wy5U6q3Qm%2F9hI1vxO%2F8po8WCdRa0W5nLZ7d5KTxP6KF9F9y2COPrAL5bOMgJjdMdCL9g0f1wieOA22MGZY0VkMBJNeUBCL68t6405uWETuglclTCqxS0bqWpZmnsVatfYYBZarQ5ZJjUTDGodMr9kvtfRBKvx9C9QuTo1WCaVcS7OD0tkuwvQwd6mGYaSVrxl0wrFfFw2Eu9Rchv8Bv%2Fy6tIrd77UOwDmXzTxft8aOSPV47v8ebemMuvFnjktQvndxzVUwXpFkqHf8fnfxBm2tUvxIFcm73KzRAC069UODH1DvP%2B%2BpWaUxQYM8cB0CeL%2FifEHMRZSzknycP8Rf5O0b2S1ThAkod%2BHOGU9IXyHHK6jfFqcHdWmDiYhuwhshJ7gDa12jbMLTf5n9%2B%2FP1myPeNxiKWXo2rWdEXbidikYVMFJ1fv%2FQmYhjjvnwu40qfSy96yu86qOn3%2BoMcn84gf3MHTO83ysB79SfOcbQZH2PUKietazlZ7iq%2B1zjoQetqlp5n5cM90XJYxSUpOhDZnK9KC%2Fu7FRxpdZce3douYqLrYJtwQoMTbkwB9DRtqn1CwnYvjaMucT0Gw6Zcj9HdOn2PoXDlmCRnBFjJ0OahbWPOl6F3M9xHjbl8Rp1Jar08PXOPO06zu4vRagirl2wjd0KmL9ghDA7UZfAE0esUcXdBEbtd3KpryVF6%2FbjXmQzSSw7Mb8ilXIRlVM1h56ik1K5nk3klmSLVR8bQPlNBuTdFbyK5ZGIe5TuGvewEebV%2BUj5V3zRH5%2BrLh3jE9YYXlS5mtJPdculWSmaMUVZyePwh2OSSx%2FWdGVdZRA4Hy40nv3SrzjXEuJs15OwC0gq%2Fj0w60s%2Fz9Zjfb61vDc%2Fwu7L24fPiRVNpNZCHMN7%2FQjHFAhGPt7xUNOi6G3UuFWeM25Jf3s97E5ppvOJORKXjPNKNfIzrLFln1m%2FU6pp%2Fma2tkZU1NuSD9H6D1ta1Vs1d6YTr8uuxswuPAStcjrWO9iXdsBpb3kY1kmLwDknxpsTENWwYtkkGs9KBu5zGIg9uGSli72FCPQoIBDQAMy6J5x2J3pAUz82BAtMKucEpQdF930voZ5bQz8rT7%2FhiS2PkMytlvO%2FUKhXuHs%2BxHTIiwAQTGnDiYBaZ8KS3WNZiJFqwY8mrqlHmi%2FhrRjdwe4AfxjKJEI%2FT%2B3C%2FYEtDDzzZRVRNUIahRGCiIZg8iLuRZEmZjyB6kB%2FhRpe6hYug1tpDUW0wVBdybi6BdnHAQwZnN1AP9PAGQzWyjETQm4MEWiAOj5GKTWG8PuHQIYwzjG%2BP23JMwAAEjrZcMvy4Q1lXYFtgB3p9dBwC4CLPUx%2BJY%2Bdd8zHnaBWNRE40%2BfcFr2E8KxzIpczuqDsuaEMjj57JccpZEqwAGxcfvhU0sbqdHrW7Ts9ItohHmNmUQeKxW2M4UEJYc5QnbO9ou9QvuG0ui%2Bm%2F88QBXvpfUebsPw%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+## Authentication Process Design
+
+The authentication process was designed to ensure that only authorised users can access their accounts securely. As shown in the flowchart, the process begins when the user enters their email and password into the login interface.
+
+The system first validates the input to ensure that required fields are not empty and that the data is in the correct format. This improves usability by providing immediate feedback and prevents unnecessary requests being sent to the backend.
+
+If the input is valid, the login request is sent to the Flask backend, where the system retrieves the corresponding user record from the Users table in the SQL database. The entered password is then compared with the stored password to determine whether they match.
+
+If the authentication fails, an error message is displayed to the user, prompting them to re-enter their details. This ensures clarity while maintaining security by not exposing specific details about the failure.
+
+If the authentication is successful, the user is granted access and redirected to the dashboard. This provides a seamless user experience and allows access to system features such as viewing products, placing orders, and managing account details.
+
+This process ensures both usability and security by combining input validation, backend verification, and controlled access to system functionality.
+
+
+
+### Traceability Links
+
+This authentication process supports the following functional requirements:
+- FR1: User login functionality
+- FR2: User account access
+- FR6: Secure access to personal data and order history
+
+It also links to the following system components:
+- Users Table (ERD) – stores user credentials and account data
+- Flask Backend (System Architecture) – processes authentication logic
+- SQL Database – retrieves and verifies stored user records
+
+It satisfies the following non-functional requirements:
+- Security – prevents unauthorised access
+- Usability – provides clear error messages and feedback
+- Reliability – ensures consistent login behaviour
+
+https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.drawio&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%226iCoH1DZGBvVHnih1pzT%22%3E7Vxbc6M2FP41nmkfkkEIsP2Yi9PdTjpN6%2By2%2B6iAjNnIiAo5sfvrK4EwCGMvSRAkHb9k0EGS4Rx9505G8Gq1%2BYWhZPkbDTAZ2VawGcHrkW17Y1f8lYRtTph6ICeELApyUoUwj%2F7Fimgp6joKcKpN5JQSHiU60adxjH2u0RBj9FmftqBE%2F9UEhXiPMPcR2af%2BFQV8mVMn9rikf8JRuCx%2BGXjT%2FM4KFZPVm6RLFNDnCgnORvCKUcrzq9XmChPJu4Iv%2BbqbA3d3D8ZwzNssCCe%2FhrM5dKef0af78N7%2FHrDwzHbybXCwx4ZyX0VK6Zr5%2BMhmxTy%2BLbgnt52rIWV8SUMaIzIrqZeMruMAy0e0xKicc0tpIohAEL9jzrfqZKA1p4K05Cui7uJNxP%2BWy89dNfpWuXO9UTtng20xiDnbVhbJ4bfqvXJZNirWqfOHWIj5ET7AnXQFKjBdYbGHWMcwQTx60vmM1PkMd%2FNKEYoLJcUXSPSI%2FCpyIUQASPL%2FeRlxPE9QJthnAWGdu%2FnKJ0TWauVcvD1XVMw43lR%2BYv%2BVlxVoeAoHzyWMQIENtQssxkpZ7LRA51yy23BJvB3X2dHErZQz%2BoivKKFMEGMaS7YuIkJqJESiMBZDX%2FwiFvRLyb9IaJoLdWMVBUEDJvZEcLXE%2FiNdCylYN0RoFNu6jlDI0OpVYoENYgF1sbiaWIA5sbgdqiN4UkcZH9wh1RFsAzSd6y9VSV8jLEFwidJH3Jtq2o27x8C4Qww4JwzkVnFQm%2ByYB8EcE%2Bn%2BCluAiXif7OWE9bEtYYXknYjGfUHDdYxBw%2BsQGu4JGuXhHAoZrnlk3DHqY7FaBo4SDzvvqR80ONAUGjzzvLui8SJiwrG0fmeBcFp74tnYNcWzQhidaJDxSYNkfJgMqUHGh%2BXXnW2Npfr4E%2F%2BzxikvFMkNEQ5n5nf6j9kEU9iwz%2FXwa2IMHRPzvPwqwuAAcVyqFOGxcBSRtD8GTsfG1EuXDsr0pF5y391qPgf96JdpD1aWYR0Rn%2BNiIFBh3aMH8Tu2R2QyKoiexGUoL3%2Ba%2F3Er4YM4ekAp%2FrmYIl6zMqsvmw2ciTFUdRkRF7mrE6wOnIOe0tSWeVx9SZSluaVbRLh8uTsaxdygqalhwh1PTWFi0iUmTpUbxQh7UEy0qt104suqwA7leaHcof2S9hfhAc%2BYtXC6DPHyA3FCxhmcDooM2zwyrqM0IWhbccNqILmTrQJ94WNsDB92p5bjVGSrJOMGg0erKlu6RIm8FLMQIZjQrGasMTavZReNLuKFLhPMIvGQsmCtL7wrbzRCrRSy3BgxX0kTyF3T%2FNo6t2ETFGdZhbxay%2FDQSm4aP6RJtmAvGNolETqLgSYNqIU11AI9seCZq3zYXYJ22KpgBbIlgA%2BAVgwqB00HMtBgXKL6jS7goNlMWyFZtbNlkX82uyFcOnpQarK9RQ%2BY6PJ4QT8KFnhVjyI5meRBlNjcvRy5100IjmlrzDUyVi0RUgUO1DAGD3Ne7Z3FeBWQasvPauvpYpGqroGq3HbP94YI7X8E2ZfY2WOQNRS1DWp84VshC98HZLe4fV7kGGbPhJC9I8yuobRweO2%2BcAladWPse0JVN0l5UqtNKJuezxeEPvtLxPh5gP0oleFCs1O0x%2FSsHDKSGd9kLZ7l5lWeCrAaXBWr5qrAWoBhecZSU1028YGP06bRoPjeqJeypReMZVFpMSHZpTAP2LuJbvGAM641hu8tqGfy9QXiIn%2BGtsvroWuuwNUyA4Bu1UTSE6Dv0HaFM%2FbM176P03SxJmZxXa9uAmgsCgEvbDk51DJdNWkPKSVrji%2FKAFEPF53GsHSf77LLJ02zNE0hgacISTlwFiWyCnBx97k%2F9WqudR20qtL%2FiO1pkn8ts4g2UlQNieJl1lo%2BY4y%2BLivcED9PdKaBuuawjJVLnE6d8XdUmbeO2yTDsfJbu2pfZeBcVz82RSmh0Vx1ZmRa9QF0hLq97NZOpzVnt%2Fbm1xNmCsUmc2M1bLughm3oGcuNdVrwGdTfBKOOcmMiCLOyTGsF9HD8I9hnoyYfto0uGLRAVPsM9BV5s%2Ba2kA%2BbN4Ng6ukA%2FIEWLtWs%2BRDcnnaIWO%2F9GOPWFSjH8arYlGg1ic3xkNCEoENhTz6gsF%2BU8nyTCh70Uw7Y6afkHxHV%2FQl62E86W7nCr%2F%2FEfGaymb7mlU7MtSF1qfbAO9J7LSNO6xzYju6AOgCYBMUgwahdO1HeGNaOzouCUTEs%2FyNIPr38typw9h8%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+The checkout process was designed to allow users to securely place orders while ensuring all data is validated and processed correctly. As shown in the flowchart, the process begins when the user reviews their basket and proceeds to checkout.
+
+The user is required to select either delivery or collection and input the relevant details. This supports usability and flexibility, aligning with user needs identified in Activity A.
+
+Once the user confirms the order, the request is sent to the Flask backend, where validation checks are performed to ensure all required fields are completed correctly. If validation fails, the user is prompted to correct their input, improving data accuracy and user experience.
+
+If the input is valid, the system integrates with the Stripe API to process the payment. This external API was chosen as it provides secure and reliable payment handling without requiring the system to store sensitive financial data, supporting security and data protection requirements.
+
+If the payment fails, the user is notified and can retry. If successful, the order is stored in the Orders table within the SQL database. At this stage, the system also updates the user’s loyalty points, supporting the functional requirement for a loyalty scheme.
+
+Finally, the user receives confirmation of their order, which is displayed on screen. This ensures clear feedback and improves overall usability.
+
+
+This process links to:
+- FR3: Users can purchase products
+- FR4: Users can select delivery or collection
+- FR5: Loyalty scheme is applied
+
+It also connects to:
+- Orders Table (ERD)
+- Users Table (Loyalty Points)
+- Stripe API (Technical Specification)
+- Flask Backend (System Architecture)
+
+
+
+https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22atXITgz-HOPXnnLX3iui%22%3E7Vtbk6I4GP01Vk0%2F2MVdfVT7YtX21FrbtbMzjxEiZAyECcHL%2FvpNJCiI7a0NjN3rg5IvIZdzvu8Qktgyh%2BHymYI4%2BEo8iFuG5i1b5kPLMDodh38Lwyoz6LpmZxafIk%2FatoZX9C%2BURk1aU%2BTBpFSQEYIZistGl0QRdFnJBigli3KxKcHlVmPgw4rh1QW4av0HeSzIrF2js7WPIPKDvGXd6WU5IcgLy5EkAfDIomAyH1vmkBLCsqtwOYRYgJfjkt339EbupmMURuyUG6Y%2FR3j6B3wiD1oQr8Cv0TxatI1qLbLihK1yDBhc8rxBwELMDTq%2FXASIwdcYuKLEgjPPbQmjZAaHBBPKjRGJeN5gijDeMQGM%2FIgnXd4i5PbBHFKGOOJ9mREizxNNDyhJIw%2BK7ms8lXVrDnAqu%2FX8MuKG11XCYCgzeU1wWRiGROIZkhAyuuJFggJZpmRmsSXWkSZZiaVbWTp33zwfSLfyNzVvkecXEvwziMj7Ar2KP1apISl14aHKKhSWoSSUBcQnEcAvhMSS05%2BQsZUMQJAyUmYcLhH7Xrj%2BIaq6N3c%2BMvNhKRtaJ1aFxBhSxAETvBdIZYD6kB0YkN7ZzyaFGDA0LyN2fW6MT8kNHxpdfS8mfhQT24rWqdWZjPYaZfQU2eOCHYvLNMR9l5GiVL2ACcRjkiCGiJCsCWGMhHu0jAkKi1yRlGEUcZnMH1d7pe01jWOMOBOXyJpTlTWzLGuGppVkzdFUyVoO61VCx7qZ0Dk1COwmg8C4pqx9PG6sRrkxPyU3bzxy7u0rPXTMRjm1%2FudUAadGo5zan5LTU7l5Y7ZSDzfWbz7J%2BzupbYJndZRN8LpXDABHXQBoikRNVyJqhQWiBgLH%2Bc0DZwxWoejZuxZ%2FjgeRY5eDyDate1tVGHWuGEa9usLIPhg373RheeuYoDXVubJZO8rW21G2LLbkXTusbLpxOVG9U2KD14PiBL6xUFqAteLaf0EfJUJmDK3vupw1dpFzW1Xn1o2yd5vdMpCbe67v284VfTvfF%2FiYzm0269w5uKq8%2B4X4KKrLoU1li1r6Af%2B9BkwDsW0FuW1MiZe6LKkNMmXbG7qhFrK%2B54l5FeFfA5DMYG2yaRnKIDtpkfpyyIYBdGd8wlUbUl1lSJ30pnc5Ui3DwWIDdErWYr2t0%2FmVkjyjnawfL31eQNfi5bqePJ9f%2BeJ3C7kDQtFqNEniLB9n5Z6yNrLiuTmJQXRWu9oEuDN%2F%2FVxsu9nuq8hnFERJDpIoVsjDgtu2B%2BjsC%2FUnXzhVnAst%2F7nLfkWOYdtZonhxd7d3vJtx4moKRS5OPbgxlm8op6owZZCUYfLQfNf0bsZiSlyYJGvnki8dB6ni5lI36gkt21L3ZqLbaoPrG4ILbvmTemLWu5%2FwAqQjPj0mYlhN4u3oyqTspHfvy9H%2BCiJx4KX%2BqYWjTv07aiHLphZ149VR9jqmd9Xi9eghtgWsLry6mkIJVPzS%2FwAxZLABzNStCit%2BkRxvHsubtcB6IOuZyiCTTvZZDxm1tXtN65ZX003j2Hr6OnXp7pSz30VqOoJ0zZMxN8g3r6trlunWHFMl3d1G6T5n878gkZHXF6eYW5vjswWKjpyPPS6A%2BQbHXggKqmgfEL39K5m6XtZNfXeZJHPpykpmpaKOdaQixUui5jkb%2FLfP21G4L%2BZN212OVU3cObsOt09cJeAqeN8Oc%2BfshX5A5i4NueMucDFxPLn9o0pWfPt3H%2FPxPw%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+
+
+| Functional Requirement       | Use Case                |
+| ---------------------------- | ----------------------- |
+| User can login               | Login                   |
+| User can buy products        | Checkout                |
+| User can view orders         | View Order History      |
+| Supplier can manage products | Add/Edit/Delete Product |
+
+After drawing it, in your write-up say:
+
+“Each use case directly maps to functional requirements defined in Activity A”
+
+“External actors demonstrate system integration”
+
+“The diagram defines system scope and responsibilities”
+
+👉 That one sentence = easy marks
+
+
+
+Supplier dashboard flow
+(Start)
+
+↓
+[Enter Login Details]
+
+↓
+<Valid Login?>
+
+NO → [Show Error] → back to Login
+
+YES ↓
+
+[Access Supplier Dashboard]
+
+↓
+[Select Action]
+
+↓
+<Which Action?>
+
+→ Add Product  
+→ Edit Product  
+→ Delete Product  
+
+----------------------
+
+ADD PRODUCT:
+
+[Enter Product Details]
+
+↓
+[Validate Input]
+
+↓
+<Valid?>
+
+NO → [Show Error] → back
+
+YES ↓
+
+[Save to Products Table]
+
+↓
+[Confirmation]
+
+----------------------
+
+EDIT PRODUCT:
+
+[Select Product]
+
+↓
+[Modify Details]
+
+↓
+[Update Products Table]
+
+↓
+[Confirmation]
+
+----------------------
+
+DELETE PRODUCT:
+
+[Select Product]
+
+↓
+[Confirm Delete?]
+
+NO → back
+
+YES ↓
+
+[Delete from Products Table]
+
+↓
+[Confirmation]
+
+----------------------
+
+↓
+(End)
+
+
+The supplier dashboard process allows authorised suppliers to manage product listings within the system. After successful authentication, the supplier gains access to the dashboard where they can choose to add, edit, or delete products.
+
+When adding a product, the supplier inputs product details which are validated before being stored in the Products table in the database. This ensures data accuracy and consistency.
+
+For editing, the supplier selects an existing product and updates its details, which are then saved back to the database. Similarly, deleting a product requires confirmation before removal to prevent accidental data loss.
+
+This process supports the functional requirement for supplier management and ensures efficient control over product data within the system.
+
+
+This process links to:
+- FR7: Supplier can manage products
+- Products Table (ERD)
+- Flask Backend (System Architecture)
+
+It satisfies:
+- Usability – clear dashboard navigation
+- Reliability – consistent data updates
+- Security – restricted access to suppliers
