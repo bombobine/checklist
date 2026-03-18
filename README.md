@@ -2154,3 +2154,412 @@ All tests link back to requirements:
 
 This testing plan uses a range of testing methods to fully test the system.  
 It ensures the system is functional, secure, accessible, and reliable in different scenarios.
+
+
+
+
+
+
+
+
+
+tracebility
+
+## 🔗 Requirement Traceability Table
+
+---
+
+| Requirement ID | Requirement Description | Design Component | Diagram / Section | Testing Reference | Notes / Link |
+|---------------|------------------------|------------------|------------------|------------------|-------------|
+| FR1 | User Registration | User account creation (Flask + SQL) | Authentication Flow Diagram | AUTH01–AUTH09 | Form captures username/password → validated in Flask → stored in database |
+| FR2 | User Login | Authentication system | Authentication Flow Diagram | AUTH01–AUTH15 | Includes validation, password checking, and error handling for invalid login |
+| FR3 | Browse Suppliers | Product listing page | User Flow + Wireframes | PRD01–PRD12 | Users can view products, search, and filter (basic filtering in prototype) |
+| FR4 | Purchase Products | Checkout system | Checkout Flow Diagram | CHK01–CHK15 | Includes basket → checkout → order creation → optional payment handling |
+| FR5 | Loyalty System | Points calculation logic | ERD + Checkout Flow | LOY01–LOY02 | Points added after successful order and stored in user table |
+| FR6 | Supplier Dashboard | Product management system | Supplier Flow Diagram | SUP01–SUP09 | Suppliers can add, edit, delete products → stored in database |
+
+---
+
+## 🔐 Non-Functional Requirements Traceability
+
+| Requirement ID | Requirement Description | Design Component | Diagram / Section | Testing Reference | Notes / Link |
+|---------------|------------------------|------------------|------------------|------------------|-------------|
+| NFR1 | Security | Input validation, password checking | Authentication + Security Section | AUTH12–AUTH13, SEC01–SEC03 | SQL injection prevented, invalid inputs blocked, secure login logic |
+| NFR2 | Performance | Efficient queries, simple architecture | System Architecture + ERD | PER01–PER03 | Minimal queries used due to simple database structure |
+| NFR3 | Accessibility | Clear UI, readable text, simple layout | Wireframes + User Flow | ACC01–ACC09 | Tested with keyboard navigation, contrast checks, high contrast mode |
+| NFR4 | Reliability | Error handling, validation | Authentication + Checkout Flow | AUTH03, CHK04–CHK06 | System prevents crashes and handles invalid input safely |
+
+---
+
+## 🧠 How This Links Across the Project
+
+Each requirement is supported across multiple areas:
+
+- **Design** → shows how the feature is planned  
+- **Diagrams** → visually represent how it works  
+- **Testing** → proves it works correctly  
+
+For example:
+- FR4 (Checkout) is shown in:
+  - Checkout Flow Diagram (process)
+  - Database (order storage)
+  - Testing (CHK tests)
+  
+This ensures every requirement is:
+- Designed
+- Visualised
+- Tested
+
+---
+
+## ✅ Key Traceability Points
+
+- All functional requirements (FR1–FR6) are covered by:
+  - At least one diagram
+  - At least one design component
+  - Multiple test cases
+
+- All non-functional requirements (NFR1–NFR4) are:
+  - Built into the design
+  - Referenced in testing
+  - Visible in diagrams (where applicable)
+
+---
+
+## 🏁 Summary
+
+This table ensures that every requirement is clearly linked to:
+- A design decision
+- A system component
+- A diagram
+- A testing method
+
+This demonstrates full coverage of the system and ensures nothing has been missed.
+
+
+
+
+## 🖥️ Technical Specifications (Detailed Explanation)
+
+---
+
+### 🎨 Frontend (HTML, CSS, JavaScript)
+
+The frontend of the system is built using HTML, CSS, and JavaScript. These technologies work together to create the user interface and allow users to interact with the system.
+
+HTML is used to create the structure of each page. This includes forms for login and registration, product listings, the shopping basket, checkout page, and the supplier dashboard. For example, the login page contains input fields for username and password, while the checkout page includes fields for delivery details.
+
+CSS is used to style the interface and ensure it is clear and accessible. This includes layout structure, spacing, font sizes, and colour contrast. For example, buttons are styled to be clearly visible, and form inputs are spaced to improve usability.
+
+JavaScript is used to add interactivity to the system. This includes actions such as updating the basket dynamically, validating simple inputs before submission, and improving user experience without needing to reload the page.
+
+The frontend sends user input (such as login details or order data) to the backend using form submissions or JavaScript requests. It then receives responses from the backend and updates the interface accordingly.
+
+---
+
+### ⚙️ Backend (Flask)
+
+The backend is developed using Flask, a Python-based web framework. Flask is responsible for handling all system logic and processing user requests.
+
+When a user interacts with the frontend (e.g. submitting a login form), the request is sent to Flask. Flask then processes this request by:
+- Validating the input
+- Checking data against the database
+- Running logic such as authentication or order processing
+
+For example, during login, Flask receives the username and password, checks them against stored data in the database, and returns either a success or error response.
+
+Flask also controls system processes such as:
+- Creating orders during checkout
+- Updating loyalty points
+- Managing supplier product data
+
+Flask acts as the central link between the frontend, database, and any external APIs.
+
+---
+
+### 🗄️ Database (SQL)
+
+The system uses a SQL database to store all persistent data. This includes:
+- User accounts (username, password)
+- Products (name, price, supplier)
+- Orders (items, delivery details)
+- Loyalty points
+
+The database is structured using tables with relationships between them. For example, orders are linked to users, and products are linked to suppliers.
+
+Flask communicates with the database by sending SQL queries. For example:
+- During login → SELECT query to check user credentials
+- During checkout → INSERT query to store order details
+- In supplier dashboard → INSERT/UPDATE/DELETE queries for products
+
+This ensures all data is stored and retrieved efficiently.
+
+---
+
+### 🔌 APIs (Stripe & Maps)
+
+External APIs are used to extend system functionality.
+
+Stripe is used for payment processing. During checkout, Flask sends a request to Stripe with payment details. Stripe processes the payment and returns a result (success or failure), which is then shown to the user.
+
+Maps API is used to support delivery functionality. This may include handling address input or validating delivery locations. It helps improve accuracy and usability when users enter delivery details.
+
+These APIs are not fully implemented in the exam environment but are included in the design to show how the system would work in a real-world scenario.
+
+---
+
+### 🔗 How Everything Works Together (System Flow)
+
+The system follows a clear flow:
+
+1. The user interacts with the frontend (HTML/CSS/JS)
+2. The frontend sends a request to the Flask backend
+3. Flask processes the request and applies logic
+4. Flask interacts with the SQL database to retrieve/store data
+5. If needed, Flask communicates with external APIs (e.g. Stripe)
+6. Flask sends a response back to the frontend
+7. The frontend updates the user interface
+
+This shows how all technologies are connected and ensures the system functions as a complete application.
+
+---
+
+## 📊 Non-Functional Requirements Mapping (Detailed)
+
+---
+
+### ⚡ Performance
+
+The system is designed to load quickly and respond efficiently. This is achieved by:
+- Using simple SQL queries (no unnecessary joins)
+- Keeping the backend logic lightweight using Flask
+- Avoiding complex frontend frameworks
+
+For example, product data is retrieved using direct queries and displayed immediately, ensuring fast page load times.
+
+---
+
+### 🔐 Security
+
+Security is handled through input validation and controlled data handling:
+- All user inputs are validated before processing
+- SQL queries are structured to prevent injection attacks
+- Login logic ensures only valid users can access accounts
+
+For example, during login, invalid or malicious input is rejected before reaching the database.
+
+---
+
+### ♿ Accessibility
+
+Accessibility is considered throughout the design:
+- Clear labels are used on all form inputs
+- Text is readable with sufficient contrast
+- Layout is simple and consistent
+
+The system is tested using:
+- Keyboard-only navigation
+- High contrast mode
+- Reduced visibility conditions
+
+Importantly, all features remain functional under these conditions, ensuring usability for all users.
+
+---
+
+### 🔁 Reliability
+
+The system is designed to handle errors and prevent crashes:
+- Input validation prevents invalid data
+- Error messages guide users when something goes wrong
+- Processes such as checkout prevent duplicate submissions
+
+For example, users cannot complete checkout with missing details, ensuring data integrity.
+
+---
+
+## 💡 Design Justification (Distinction-Level)
+
+---
+
+### ⚙️ Flask (Backend)
+
+Flask was chosen as the backend framework because it is lightweight and easy to implement within the time constraints of the exam. It allows full control over routing and logic without unnecessary complexity.
+
+An alternative option would have been Django, which provides more built-in features. However, Django would add unnecessary complexity for this prototype and slow down development.
+
+---
+
+### 🗄️ SQL Database
+
+A SQL database was selected because the system uses structured, relational data such as users, orders, and products. SQL allows clear relationships between tables and efficient querying.
+
+An alternative would be a NoSQL database, but this is less suitable as the system relies on structured relationships between data.
+
+---
+
+### 🎨 Frontend (HTML, CSS, JavaScript)
+
+A basic frontend stack was used to ensure the system could be developed efficiently within the exam. HTML, CSS, and JavaScript provide enough functionality to create a clear and usable interface.
+
+An alternative would be a framework such as React, which offers more advanced interactivity. However, this would significantly increase complexity and is not necessary for this project.
+
+---
+
+### 💳 Stripe API
+
+Stripe was chosen as it is a widely used and secure payment solution. Including it in the design demonstrates how real-world payment processing would be handled.
+
+An alternative would be simulating payments locally, but this would be less realistic and reduce the overall quality of the design.
+
+---
+
+### 🗺️ Maps API
+
+The Maps API was included to support delivery functionality, such as handling addresses and improving accuracy.
+
+An alternative would be manual address entry only, but this would reduce usability and realism.
+
+---
+
+### 🏁 Final Justification Summary
+
+All technologies were selected based on:
+- Simplicity (suitable for exam conditions)
+- Functionality (meets system requirements)
+- Realism (reflects real-world systems)
+
+Each choice balances practicality and effectiveness, ensuring the system is achievable while still demonstrating strong technical understanding.
+
+
+
+
+
+
+
+
+
+final justification
+
+
+### 🌍 Overall Design Justification (Project-Level)
+
+When considering the system as a whole, all design decisions were made to balance simplicity, functionality, and realism within the constraints of the exam.
+
+The chosen technologies (HTML, CSS, JavaScript, Flask, and SQL) allow the system to be developed in a structured and manageable way, while still demonstrating how a real-world application would function. Each component has a clear role, and together they form a complete system where data flows efficiently between the user interface, backend logic, and database.
+
+The architecture follows a standard client–server model, which ensures that responsibilities are separated. The frontend handles user interaction, the backend processes logic and validation, and the database manages persistent data. This separation improves maintainability and makes the system easier to understand and extend.
+
+External APIs such as Stripe and Maps are included at a design level to show how the system could be expanded beyond a basic prototype. While not fully implemented due to exam limitations, they demonstrate awareness of industry practices and how additional functionality would integrate into the system.
+
+Overall, the design prioritises:
+- Clarity and usability for the user
+- Simplicity and feasibility within time constraints
+- Logical structure and separation of concerns
+- Realistic features that reflect real-world systems
+
+This ensures the system is not only functional, but also scalable and adaptable if it were to be developed further beyond the prototype stage.
+
+
+
+
+
+links
+
+
+## 🔗 Section Link Sentences (With Requirement References)
+
+---
+
+### 1️⃣ Problem Analysis / Context
+
+This analysis directly informs the user needs and key requirements such as usability, accessibility, and performance, ensuring the system is designed around real user problems.
+
+---
+
+### 2️⃣ User Requirements
+
+These requirements form the foundation of the system design and include key considerations such as usability, security, and reliability, which are addressed throughout the project.
+
+---
+
+### 3️⃣ Functional Requirements
+
+These functional requirements define the core features of the system, such as authentication, product browsing, and checkout, which are implemented in later design sections and validated through testing.
+
+---
+
+### 4️⃣ Non-Functional Requirements
+
+Requirements such as performance, security, accessibility, and reliability influence design decisions including interface layout, validation, and system structure, and are tested in the testing strategy.
+
+---
+
+### 5️⃣ User Profiles / Empathy Map
+
+These insights ensure the system meets usability and accessibility requirements by tailoring the interface and functionality to the needs of the target users.
+
+---
+
+### 6️⃣ Research / Existing Solutions
+
+This research supports decisions related to usability, performance, and security by identifying effective features and design patterns used in existing systems.
+
+---
+
+### 7️⃣ Initial Ideas / Concepts
+
+These early ideas consider usability and functionality requirements and are refined into structured designs in later sections.
+
+---
+
+### 8️⃣ System Architecture
+
+The architecture is designed to support performance and reliability by separating concerns between frontend, backend, and database components.
+
+---
+
+### 9️⃣ Data Design (ERD, Data Dictionary)
+
+The data design ensures reliability and performance by structuring data efficiently, while also supporting security through controlled data access.
+
+---
+
+### 🔟 System Processes (Flowcharts, Pseudocode)
+
+These processes implement functional requirements while ensuring reliability and security through validation and controlled logic flow.
+
+---
+
+### 1️⃣1️⃣ Interface Design (Wireframes, User Flow)
+
+The interface design focuses on usability and accessibility by providing clear navigation, readable layouts, and intuitive user flows.
+
+---
+
+### 1️⃣2️⃣ Technical Specifications
+
+The chosen technologies support performance, security, and reliability while remaining simple enough to implement within the project constraints.
+
+---
+
+### 1️⃣3️⃣ Testing Strategy
+
+The testing strategy ensures all requirements are met, including functionality, usability, security, accessibility, performance, and reliability.
+
+---
+
+### 1️⃣4️⃣ Traceability
+
+This section confirms that all requirements, including usability, security, performance, and reliability, are addressed through design, implementation, and testing.
+
+---
+
+### 1️⃣5️⃣ Design Justification
+
+Design decisions are justified based on how well they meet requirements such as usability, performance, security, and reliability within the given constraints.
+
+---
+
+### 🏁 Final Overall Link (End of Document)
+
+Overall, the project demonstrates a consistent approach where usability, security, performance, and reliability requirements are considered throughout analysis, design, implementation, and testing.
