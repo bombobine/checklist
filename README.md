@@ -1,3 +1,78 @@
+# 📊 Iteration 2 Change Log (from Iteration 1)
+
+## Overview
+This change log records all changes made in Iteration 2 based on findings from Iteration 1 testing. The focus of this iteration was improving **maintainability, consistency, usability, and structure** without introducing backend functionality.
+
+---
+
+## 🔧 Change Log Table
+
+| ID | What was changed | Why it was changed | How it was implemented | Related Tests | Requirement Links | Result |
+|----|-----------------|-------------------|------------------------|--------------|------------------|--------|
+| I2-C01 | Added base template (`base.html`) | Repeated layout code reduced maintainability | Created shared template and used Jinja `{% extends %}` | I1-T01, I1-T54 | NFR5, NFR8 | Cleaner structure |
+| I2-C02 | Standardised navigation | Navigation inconsistent across pages | Moved menu into base template | I1-T15 | FR2, NFR8 | Consistent navigation |
+| I2-C03 | Improved homepage wording | Content too generic | Rewrote text to reflect GLH system | I1-T20 | NFR1 | Clearer purpose |
+| I2-C04 | Improved login page | Page lacked clarity | Updated headings and links | I1-T21 | FR3, NFR1 | Better usability |
+| I2-C05 | Improved register page | Minimal guidance | Improved labels and instructions | I1-T26 | FR4, NFR1 | Clearer form |
+| I2-C06 | Added required inputs | Forms allowed empty submission | Added HTML `required` attributes | I1-T25, I1-T30, I1-T46 | NFR1 | Basic validation |
+| I2-C07 | Linked suppliers to products | Weak page connection | Added query parameter (`supplier`) | I1-T35 | FR5, FR6 | Improved flow |
+| I2-C08 | Display supplier on products page | No visible connection | Used `request.args.get()` | I1-T35 | FR6, NFR1 | Better context |
+| I2-C09 | Improved product descriptions | Unrealistic placeholders | Rewrote descriptions | I1-T37 | FR6, NFR1 | More realistic |
+| I2-C10 | Improved checkout wording | Misleading UX | Added explanatory text | I1-T45 | FR7, NFR1 | Clearer messaging |
+| I2-C11 | Improved accessibility wording | Feature unclear | Added explanation text | I1-T52 | FR8, NFR2 | Better clarity |
+| I2-C12 | Improved accessibility preview | Inline styles messy | Added CSS classes | I1-T50, I1-T51 | NFR2 | Cleaner implementation |
+| I2-C13 | Improved CSS spacing | Layout inconsistent | Adjusted margins and padding | I1-T56 | NFR8 | Cleaner UI |
+| I2-C14 | Standardised headings | Inconsistent text styles | Updated across templates | I1-T16, I1-T21 | NFR8 | Consistent UI |
+| I2-C15 | Improved placeholder messages | Too basic | Rewrote system messages | I1-T23, I1-T28, I1-T45 | NFR1 | More informative |
+
+---
+
+# 🧠 Development Log – Iteration 2
+
+## Summary
+Iteration 2 focused on refining the structure and usability of the system. No major backend functionality was added, as the goal was to improve the quality of the prototype before introducing more complex features in later iterations.
+
+---
+
+## 📅 Development Log Table
+
+| Entry ID | Task | Description | Reason | Outcome |
+|----------|------|------------|--------|--------|
+| I2-D01 | Template restructuring | Created base.html and updated all pages | Reduce duplication | Cleaner structure |
+| I2-D02 | Navigation update | Centralised navigation menu | Fix inconsistency | Unified navigation |
+| I2-D03 | Homepage update | Improved wording and layout | Improve clarity | More relevant content |
+| I2-D04 | Login/register update | Improved UI and text | Improve usability | Easier navigation |
+| I2-D05 | Form improvement | Added required inputs | Prevent empty submission | Better UX |
+| I2-D06 | Supplier linking | Connected suppliers to products page | Improve flow | Better page connection |
+| I2-D07 | Product updates | Improved descriptions | Increase realism | More believable system |
+| I2-D08 | Checkout update | Improved messaging | Avoid confusion | Clearer UX |
+| I2-D09 | Accessibility update | Improved preview styling | Improve accessibility feature | Cleaner behaviour |
+| I2-D10 | CSS refinement | Adjusted layout and spacing | Improve consistency | Better visual quality |
+| I2-D11 | Consistency fixes | Standardised headings and labels | Improve polish | More professional UI |
+
+---
+
+# 📌 Key Notes
+
+- Iteration 2 remains **front-end focused**
+- No backend logic introduced (intentional)
+- Changes were based directly on **Iteration 1 testing results**
+- System is now better prepared for **Iteration 3 development**
+
+---
+
+# 🚀 Next Steps
+
+Iteration 3 will introduce:
+
+- Basket functionality
+- Session handling
+- Improved validation logic
+
+
+
+
+
 Here you go — fully GitHub README–ready markdown, clean tables, no fluff, easy to paste 👇
 
 ⸻
