@@ -1,3 +1,100 @@
+Here you go — fully GitHub README–ready markdown, clean tables, no fluff, easy to paste 👇
+
+⸻
+
+📊 Iteration 2 Change Log (from Iteration 1)
+
+Overview
+
+This change log documents all modifications made in Iteration 2 based on findings from Iteration 1 testing. Changes focus on improving maintainability, consistency, usability, and structure without introducing advanced backend functionality.
+
+⸻
+
+🔧 Change Log Table
+
+Change ID	Date	Time	What was changed	Why it was changed	How it was implemented	Related Test ID(s)	Requirement Links	Result
+I2-C01	[add]	[add]	Introduced base.html template	Iteration 1 had repeated layout code across pages, reducing maintainability	Created base.html and used {% extends %} and {% block %} in all templates	I1-T01, I1-T54	NFR5, NFR8	Reduced duplication and improved consistency
+I2-C02	[add]	[add]	Standardised navigation across all pages	Navigation links were inconsistent between pages	Moved navigation into base.html so all pages share identical menu	I1-T15	FR2, NFR8	Navigation now consistent across system
+I2-C03	[add]	[add]	Improved homepage wording and content	Homepage text was generic and not clearly linked to GLH	Rewrote text to reflect farmers, suppliers and system purpose	I1-T20	NFR1	Improved clarity and relevance
+I2-C04	[add]	[add]	Improved login page wording	Login page lacked clarity and guidance	Updated headings and added clearer register link	I1-T21	FR3, NFR1	Improved usability
+I2-C05	[add]	[add]	Improved register page wording	Register page was minimal and unclear	Updated labels and guidance text	I1-T26	FR4, NFR1	Improved usability
+I2-C06	[add]	[add]	Added HTML required attributes to forms	Forms allowed empty submission with no guidance	Added required attribute to all key inputs	I1-T25, I1-T30, I1-T46	NFR1	Basic validation now supported by browser
+I2-C07	[add]	[add]	Improved suppliers page links	Supplier → product flow was basic and not connected	Added query parameter (?supplier=) to links	I1-T35	FR5, FR6	Improved page flow
+I2-C08	[add]	[add]	Display supplier name on products page	No visible connection between suppliers and products	Used request.args.get() to display selected supplier	I1-T35	FR6, NFR1	Improved user understanding of navigation
+I2-C09	[add]	[add]	Improved product descriptions	Product data felt unrealistic and repetitive	Updated placeholder content to be more meaningful	I1-T37	FR6, NFR1	More realistic prototype
+I2-C10	[add]	[add]	Improved checkout wording	Checkout page unclear about system limitations	Updated text to clearly explain placeholder nature	I1-T45	FR7, NFR1	More honest and understandable UX
+I2-C11	[add]	[add]	Improved accessibility page wording	Accessibility feature unclear in Iteration 1	Added clearer explanation of preview-only behaviour	I1-T52	FR8, NFR2	Improved transparency
+I2-C12	[add]	[add]	Improved accessibility preview styling	Accessibility preview was basic and inconsistent	Replaced inline styles with CSS classes (preview-contrast, preview-keyboard)	I1-T50, I1-T51	NFR2	Cleaner implementation and better maintainability
+I2-C13	[add]	[add]	Refined CSS spacing and layout	Layout felt slightly rough and inconsistent	Adjusted margins, padding, font spacing and alignment	I1-T56	NFR8	Cleaner interface
+I2-C14	[add]	[add]	Improved consistency of headings and labels	Inconsistent casing and wording across pages	Standardised headings and labels across all templates	I1-T148	NFR8	More professional and consistent UI
+I2-C15	[add]	[add]	Improved placeholder messaging	Messages were too basic and repetitive	Reworded to better explain future functionality	I1-T143–I1-T147	NFR1	Better communication to user
+
+
+⸻
+
+🧠 Development Log – Iteration 2
+
+Summary
+
+Iteration 2 focused on refining and organising the system rather than introducing major new functionality. Changes were based directly on issues identified during Iteration 1 testing.
+
+⸻
+
+📅 Development Entries
+
+Entry ID	Date	Task	Description of work	Reason for change	Outcome
+I2-D01	[add]	Template restructuring	Created base.html and updated all templates to extend it	Reduce repeated code and improve maintainability	Cleaner structure and easier future updates
+I2-D02	[add]	Navigation update	Moved all navigation into shared template	Fix inconsistent navigation across pages	Consistent navigation system
+I2-D03	[add]	Homepage improvements	Updated text and structure	Make system purpose clearer	Homepage better reflects GLH system
+I2-D04	[add]	Login/register refinement	Improved wording and layout	Improve usability and clarity	Easier user understanding
+I2-D05	[add]	Form usability	Added HTML required attributes	Improve basic validation without backend logic	Prevents empty submissions
+I2-D06	[add]	Supplier-product linking	Added supplier query parameter to products page	Improve page flow and system connection	Navigation feels more connected
+I2-D07	[add]	Product content update	Rewrote placeholder product descriptions	Improve realism of prototype	More believable product page
+I2-D08	[add]	Checkout clarity	Updated checkout messaging	Avoid misleading user about functionality	More transparent system behaviour
+I2-D09	[add]	Accessibility improvements	Updated preview styling and messaging	Improve accessibility feature clarity	Cleaner and clearer preview
+I2-D10	[add]	CSS refinement	Improved spacing and layout	Improve visual consistency	Cleaner UI
+I2-D11	[add]	Consistency fixes	Standardised headings and labels	Improve interface consistency	More professional appearance
+
+
+⸻
+
+📌 Key Development Notes
+	•	Iteration 2 intentionally avoided adding backend logic
+	•	Focus remained on:
+	•	structure
+	•	usability
+	•	maintainability
+	•	consistency
+	•	This keeps the system realistic for a multi-iteration development model
+
+⸻
+
+📈 Impact of Iteration 2
+
+Area	Improvement
+Maintainability	High (due to base template)
+Usability	Moderate improvement
+Consistency	High improvement
+Accessibility	Slight improvement
+Functionality	Still minimal (intentionally)
+
+
+⸻
+
+🚀 Leads into Iteration 3
+
+Based on these changes, the system is now ready for:
+	•	first real functionality (basket logic)
+	•	session handling
+	•	improved validation
+
+⸻
+
+If you want next, I can do the Iteration 2 testing pack in the exact same level as Iteration 1 so everything lines up perfectly for distinction 👍
+
+
+
+
 # 📘 T-Level Digital Production, Design & Development  
 ## Activity A — Investigation & Planning
 
