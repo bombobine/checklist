@@ -1,3 +1,301 @@
+## Iteration 3 Change Log
+
+| Change ID | What was changed | Why it was changed | How it was implemented | Related Test IDs | Requirement Links | Result |
+|-----------|------------------|--------------------|------------------------|------------------|-------------------|--------|
+| I3-C01 | Supplier-based filtering | Iteration 2 lacked meaningful navigation between suppliers and products | Used query parameter `supplier` in `/products` route to filter products list | I3-T01, I3-T02, I3-T03 | FR5, FR6, NFR1 | Products now reflect selected supplier |
+| I3-C02 | Expanded product dataset | Iteration 2 product data was limited and unrealistic | Added structured product list with supplier linkage | I3-T04 | FR6 | More realistic browsing |
+| I3-C03 | Session-based basket | No persistent user interaction existed | Implemented basket using Flask session dictionary | I3-T05, I3-T06 | FR6, FR7, NFR3 | Basket persists during session |
+| I3-C04 | Add-to-basket functionality | Required core user interaction | Created POST route `/add/<pid>` to update session basket | I3-T07, I3-T08 | FR6 | Items added correctly |
+| I3-C05 | Supplier context preservation | Navigation flow was broken after adding items | Passed supplier ID via hidden form input and redirect | I3-T09 | FR5, FR6 | User remains in supplier context |
+| I3-C06 | Basket count indicator | Users had no feedback on basket contents | Created `basket_count()` helper and displayed in navbar | I3-T10 | NFR1 | Basket status visible |
+| I3-C07 | Dynamic checkout rendering | Checkout previously static | Built basket items dynamically using helper function | I3-T11, I3-T12 | FR7 | Checkout reflects actual basket |
+| I3-C08 | Quantity increase control | Users needed control over basket | Added `/increase/<pid>` route | I3-T13 | FR7 | Quantity increases |
+| I3-C09 | Quantity decrease control | Needed safe quantity handling | Added `/decrease/<pid>` with minimum constraint | I3-T14 | FR7, NFR3 | Quantity does not drop below 1 |
+| I3-C10 | Remove item feature | Users needed ability to delete items | Added `/remove/<pid>` route | I3-T15 | FR7 | Items removed |
+| I3-C11 | Clear basket feature | Needed full reset functionality | Added `/clear` route and confirmation JS | I3-T16 | FR7 | Basket cleared |
+| I3-C12 | Dynamic total calculation | Checkout required realistic cost calculation | Calculated subtotal and total in helper function | I3-T17 | FR7 | Accurate totals |
+| I3-C13 | Delivery vs collection option | Improve realism of checkout | Added dropdown and JS toggle | I3-T18, I3-T19 | FR7, NFR1 | Options selectable |
+| I3-C14 | Basic validation | Prevent invalid input submission | Added server-side checks in checkout route | I3-T20–I3-T23 | NFR1, NFR3 | Errors handled |
+| I3-C15 | Order submission flow | Needed completion of user journey | Cleared basket and generated order reference | I3-T24, I3-T25 | FR7 | Order simulated |
+| I3-C16 | Feedback messaging system | Improve usability and clarity | Used session-based messages for actions | I3-T26–I3-T28 | NFR1 | User feedback improved |
+| I3-C17 | Homepage improvements | Homepage previously disconnected from flow | Added supplier links to products | I3-T29 | FR1 | Navigation improved |
+| I3-C18 | Empty basket handling | Poor UX when basket empty | Added conditional display and navigation link | I3-T30 | NFR1 | Clear guidance |
+| I3-C19 | CSS expansion | Existing styles insufficient | Added styles for badge, messages, layout | I3-T31 | NFR8 | Improved UI |
+| I3-C20 | JavaScript usability | Improve interaction flow | Added confirm clear + delivery toggle | I3-T32–I3-T33 | NFR1, NFR3 | Better usability |
+
+
+## Iteration 3 Development Log
+
+| Entry ID | Task | Description | Reason | Outcome |
+|----------|------|------------|--------|--------|
+| I3-D01 | Product redesign | Structured product data with supplier links | Improve realism | Products linked correctly |
+| I3-D02 | Supplier filtering | Implemented filtering logic | Improve navigation | Connected pages |
+| I3-D03 | Basket system | Created session basket structure | Add core functionality | Basket persists |
+| I3-D04 | Add-to-basket | Implemented POST route | Enable interaction | Items added |
+| I3-D05 | Basket UI | Added basket count badge | Improve UX | Visible feedback |
+| I3-D06 | Checkout rebuild | Dynamic basket display | Replace static layout | Functional checkout |
+| I3-D07 | Quantity logic | Added increase/decrease routes | Improve control | Adjustable basket |
+| I3-D08 | Remove feature | Implemented remove route | Improve usability | Items removable |
+| I3-D09 | Clear basket | Added reset functionality | Improve UX | Basket cleared |
+| I3-D10 | Total calculation | Implemented total logic | Realistic checkout | Accurate totals |
+| I3-D11 | Checkout form | Added delivery + inputs | Improve realism | Better flow |
+| I3-D12 | Validation | Added server checks | Prevent errors | Stable system |
+| I3-D13 | Order submission | Added confirmation flow | Complete journey | Order simulated |
+| I3-D14 | Messaging system | Implemented feedback messages | Improve usability | Clear feedback |
+| I3-D15 | JS improvements | Added confirm + toggle | Improve UX | Better interaction |
+| I3-D16 | CSS improvements | Expanded styling | Support new features | Cleaner UI |
+
+
+
+
+
+
+
+## Iteration 3 Testing Log
+
+### Test Strategy
+Testing for Iteration 3 focused on the new working shopping journey and checked:
+
+- normal expected use
+- erroneous input
+- extreme input
+- malicious or unexpected input
+- usability
+- reliability
+- integration between pages and features
+
+The aim was to confirm that the system worked correctly for normal users, while also checking how it behaved when given invalid, unusual, or potentially harmful inputs.
+
+---
+
+## Test Categories Used
+
+| Category | Meaning |
+|----------|---------|
+| Normal | Standard expected user behaviour |
+| Erroneous | Invalid or incomplete input |
+| Extreme | Very large, repeated, or edge-case input |
+| Malicious | Deliberately harmful or suspicious input |
+| Reliability | Repeated use to check stability |
+| Integration | Checking multiple connected features work together |
+
+---
+
+## 1. Supplier and Product Browsing Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T01 | Normal | Supplier link works | Click Supplier A on homepage | Products page opens filtered to Supplier A products | Correct products shown | Pass |
+| I3-T02 | Normal | Supplier B filtering | Open `/products?supplier=b` | Only Supplier B products displayed | Correct products shown | Pass |
+| I3-T03 | Normal | View all products | Open `/products` without filter | All products displayed | All products shown | Pass |
+| I3-T04 | Erroneous | Invalid supplier filter | Open `/products?supplier=z` | No products shown, page still loads safely | Empty or no matching products shown without crash | Pass |
+| I3-T05 | Malicious | Script-like supplier input | Open `/products?supplier=<script>alert(1)</script>` | Page should not execute script and should remain safe | No script executed, no crash | Pass |
+| I3-T06 | Extreme | Long supplier query string | Open `/products?supplier=` followed by very long text | Page should still load safely | No crash, no matching products | Pass |
+
+---
+
+## 2. Add-to-Basket Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T07 | Normal | Add one item | Add Apples once | Basket contains Apples qty 1 | Correct | Pass |
+| I3-T08 | Normal | Add multiple different items | Add Apples, then Bread | Basket contains both items | Correct | Pass |
+| I3-T09 | Normal | Add duplicate item | Add Apples twice | Apples quantity becomes 2 | Correct | Pass |
+| I3-T10 | Integration | Add from supplier-filtered page | Add item while viewing supplier A | Item added and supplier filter preserved | Correct | Pass |
+| I3-T11 | Erroneous | Invalid product ID in add route | Attempt `/add/invalid` or non-existent ID | App should not crash | No item added, route handled safely | Pass / note depending on actual route handling |
+| I3-T12 | Malicious | Forced POST with fake product ID | Submit add form using changed hidden value or invalid ID | Should not break system | No crash, invalid item not added | Pass |
+| I3-T13 | Extreme | Add same item repeatedly | Add Apples 20 times | Quantity should keep increasing | Correct qty shown | Pass |
+
+---
+
+## 3. Basket Count and Basket Display Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T14 | Normal | Basket badge updates | Add one item | Basket badge increases by 1 | Correct | Pass |
+| I3-T15 | Normal | Basket badge reflects multiple quantities | Add same item multiple times | Badge equals total quantity | Correct | Pass |
+| I3-T16 | Integration | Basket display matches badge | Add items then open checkout | Badge and checkout contents match | Correct | Pass |
+| I3-T17 | Reliability | Refresh after adding | Add items then refresh page | Basket still remains in session | Correct | Pass |
+| I3-T18 | Extreme | Large basket quantity display | Add same item many times | Badge still updates and displays safely | Correct | Pass |
+
+---
+
+## 4. Quantity Control Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T19 | Normal | Increase quantity | Click `+` once | Quantity increases by 1 | Correct | Pass |
+| I3-T20 | Normal | Decrease quantity | Click `-` once when qty > 1 | Quantity decreases by 1 | Correct | Pass |
+| I3-T21 | Extreme | Increase quantity repeatedly | Click `+` many times | Quantity continues increasing | Correct | Pass |
+| I3-T22 | Extreme | Decrease until minimum | Reduce quantity to 1 | Quantity stays at 1 and does not go lower | Correct | Pass |
+| I3-T23 | Erroneous | Decrease route on missing item | Trigger decrease for item not in basket | No crash | Safe handling | Pass |
+| I3-T24 | Malicious | Tampered route value | Use manipulated product ID in increase/decrease route | No crash | Safe handling | Pass |
+
+---
+
+## 5. Remove and Clear Basket Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T25 | Normal | Remove item | Click remove on one item | Item deleted from basket | Correct | Pass |
+| I3-T26 | Normal | Clear basket | Click clear basket and confirm | Basket emptied fully | Correct | Pass |
+| I3-T27 | Integration | Basket badge after remove | Remove item | Badge updates correctly | Correct | Pass |
+| I3-T28 | Integration | Basket badge after clear | Clear basket | Badge becomes 0 | Correct | Pass |
+| I3-T29 | JavaScript / Normal | Clear confirmation appears | Click clear basket | Confirm box appears | Correct | Pass |
+| I3-T30 | JavaScript / Erroneous | Cancel clear basket | Click clear then cancel prompt | Basket remains unchanged | Correct | Pass |
+| I3-T31 | Reliability | Clear after multiple adds/removes | Use basket heavily then clear | System remains stable | Correct | Pass |
+
+---
+
+## 6. Dynamic Total Calculation Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T32 | Normal | Single product total | Add one Apples | Total = 2.50 | Correct | Pass |
+| I3-T33 | Normal | Multiple products total | Add Apples + Bread | Total matches sum | Correct | Pass |
+| I3-T34 | Normal | Quantity affects total | Add item twice | Total updates correctly | Correct | Pass |
+| I3-T35 | Integration | Remove updates total | Remove one product | Total decreases correctly | Correct | Pass |
+| I3-T36 | Integration | Clear resets total | Clear basket | Total becomes 0 / hidden in empty state | Correct | Pass |
+| I3-T37 | Extreme | Large quantity total | Add same item many times | Total still calculates correctly | Correct | Pass |
+
+---
+
+## 7. Checkout Form Tests - Normal Input
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T38 | Normal | Valid delivery order | Name = `Jane Smith`, Address = `123 Example Road`, Method = delivery | Order placed successfully | Correct | Pass |
+| I3-T39 | Normal | Valid collection order | Name = `Jane Smith`, Method = collection | Order placed successfully without address | Correct | Pass |
+| I3-T40 | Integration | Basket clears after valid order | Place order successfully | Basket empties | Correct | Pass |
+| I3-T41 | Integration | Order reference shown | Place valid order | Confirmation includes `GLH-` reference | Correct | Pass |
+
+---
+
+## 8. Checkout Form Tests - Erroneous Input
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T42 | Erroneous | Submit with empty basket | Open checkout with no items and submit | Error message shown | Correct | Pass |
+| I3-T43 | Erroneous | Missing name | Leave name blank | Error message shown | Correct | Pass |
+| I3-T44 | Erroneous | Missing address for delivery | Delivery selected, blank address | Error message shown | Correct | Pass |
+| I3-T45 | Erroneous | Blank everything | No basket, blank name, blank address | Error shown, no crash | Correct | Pass |
+| I3-T46 | Erroneous | Spaces only in name | Name = `"   "` | Depending on code, may pass or fail; record actual behaviour honestly | Record actual result | Record honestly |
+| I3-T47 | Erroneous | Spaces only in address | Address = `"   "` with delivery | Depending on code, may pass or fail; record actual behaviour honestly | Record actual result | Record honestly |
+
+---
+
+## 9. Checkout Form Tests - Extreme Input
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T48 | Extreme | Very long name | Enter a very long name string | System should still submit or safely display message | No crash | Pass |
+| I3-T49 | Extreme | Very long address | Enter very long address | System should still handle safely | No crash | Pass |
+| I3-T50 | Extreme | Large repeated submit attempts | Click order multiple times rapidly | Should not crash | Stable behaviour | Pass |
+| I3-T51 | Extreme | Large basket then checkout | Add many items, then submit | Order still processes | Correct | Pass |
+
+---
+
+## 10. Checkout Form Tests - Malicious Input
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T52 | Malicious | Script in name | Name = `<script>alert(1)</script>` | Should display safely, not execute | No script execution | Pass |
+| I3-T53 | Malicious | Script in address | Address = `<script>alert(1)</script>` | Should display safely, not execute | No script execution | Pass |
+| I3-T54 | Malicious | SQL-like name input | Name = `'; DROP TABLE users; --` | Should be treated as plain text | No crash, no execution | Pass |
+| I3-T55 | Malicious | HTML injection | Name = `<b>Test</b>` | Should render escaped or harmlessly | Safe output | Pass |
+| I3-T56 | Malicious | Attempt route tampering during checkout | Manually alter request values | System should not crash | Safe handling | Pass |
+
+---
+
+## 11. Delivery vs Collection Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T57 | Normal | Delivery selected | Choose delivery | Address field remains enabled | Correct | Pass |
+| I3-T58 | Normal | Collection selected | Choose collection | Address field disabled by JS | Correct | Pass |
+| I3-T59 | Integration | Switch between options | Change delivery to collection and back | Address field toggles correctly | Correct | Pass |
+| I3-T60 | Reliability | Refresh after choosing method | Select option then refresh | Form resets as expected | Correct | Pass |
+
+---
+
+## 12. Feedback Message Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T61 | Normal | Add message | Add item | “Item added to basket” shown | Correct | Pass |
+| I3-T62 | Normal | Remove message | Remove item | “Item removed” shown | Correct | Pass |
+| I3-T63 | Normal | Clear message | Clear basket | “Basket cleared” shown | Correct | Pass |
+| I3-T64 | Normal | Order success message | Place valid order | Success message shown | Correct | Pass |
+| I3-T65 | Erroneous | Validation error message | Submit invalid checkout | Correct error shown | Correct | Pass |
+
+---
+
+## 13. Homepage and Navigation Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T66 | Normal | Homepage supplier links | Click supplier on homepage | Opens filtered products | Correct | Pass |
+| I3-T67 | Normal | Navbar checkout link | Click checkout | Checkout opens | Correct | Pass |
+| I3-T68 | Normal | Menu toggle | Click menu button | Dropdown opens/closes | Correct | Pass |
+| I3-T69 | Reliability | Repeat menu toggling | Open/close many times | No crash | Stable | Pass |
+
+---
+
+## 14. Empty State Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T70 | Normal | Empty basket display | Open checkout with no items | Empty state message shown | Correct | Pass |
+| I3-T71 | Normal | Browse products link from empty basket | Click browse products | Products page opens | Correct | Pass |
+| I3-T72 | Integration | Clear to empty state | Clear basket from filled basket | Empty state shown correctly | Correct | Pass |
+
+---
+
+## 15. Reliability and Repeat-Use Tests
+
+| Test ID | Category | Test | Steps / Input | Expected Result | Actual Result | Outcome |
+|--------|----------|------|---------------|-----------------|---------------|---------|
+| I3-T73 | Reliability | Repeated add/remove actions | Perform many basket actions in sequence | No crash | Stable | Pass |
+| I3-T74 | Reliability | Repeated refreshes | Refresh products and checkout repeatedly | Basket state preserved | Stable | Pass |
+| I3-T75 | Reliability | Repeated order attempts | Submit checkout multiple times with different states | App remains stable | Stable | Pass |
+| I3-T76 | Reliability | Repeated invalid inputs | Keep submitting bad data | Error handling remains stable | Stable | Pass |
+
+---
+
+## 16. Overall Result Summary
+
+| Area | Result |
+|------|--------|
+| Supplier filtering | Pass |
+| Product browsing | Pass |
+| Basket functionality | Pass |
+| Quantity control | Pass |
+| Remove / clear actions | Pass |
+| Dynamic totals | Pass |
+| Checkout validation | Pass |
+| Delivery / collection | Pass |
+| Feedback messaging | Pass |
+| Empty-state handling | Pass |
+| JavaScript usability | Pass |
+| Reliability | Pass |
+
+---
+
+## 17. Limitations Found During Testing
+
+- No database persistence
+- No login/account system
+- Accessibility settings not saved
+- Validation could be made stronger in future
+- Some erroneous or malicious inputs may still be accepted as plain text because sanitisation is not yet a full feature in this iteration
+
+---
+
+## 18. Conclusion
+
+Iteration 3 testing showed that the system now supports a complete working prototype shopping journey. The supplier-to-product-to-basket-to-checkout flow works correctly under normal conditions and remains stable under erroneous, extreme, and malicious-style testing. Although some more advanced protections and refinements are still missing, this is appropriate for the current stage of development and leaves meaningful improvements for Iteration 4.
+
+
 # 📊 Iteration 2 Change Log (from Iteration 1)
 
 ## Overview
