@@ -1,49 +1,251 @@
-## Iteration 3 Change Log
 
-| Change ID | What was changed | Why it was changed | How it was implemented | Related Test IDs | Requirement Links | Result |
-|-----------|------------------|--------------------|------------------------|------------------|-------------------|--------|
-| I3-C01 | Supplier-based filtering | Iteration 2 lacked meaningful navigation between suppliers and products | Used query parameter `supplier` in `/products` route to filter products list | I3-T01, I3-T02, I3-T03 | FR5, FR6, NFR1 | Products now reflect selected supplier |
-| I3-C02 | Expanded product dataset | Iteration 2 product data was limited and unrealistic | Added structured product list with supplier linkage | I3-T04 | FR6 | More realistic browsing |
-| I3-C03 | Session-based basket | No persistent user interaction existed | Implemented basket using Flask session dictionary | I3-T05, I3-T06 | FR6, FR7, NFR3 | Basket persists during session |
-| I3-C04 | Add-to-basket functionality | Required core user interaction | Created POST route `/add/<pid>` to update session basket | I3-T07, I3-T08 | FR6 | Items added correctly |
-| I3-C05 | Supplier context preservation | Navigation flow was broken after adding items | Passed supplier ID via hidden form input and redirect | I3-T09 | FR5, FR6 | User remains in supplier context |
-| I3-C06 | Basket count indicator | Users had no feedback on basket contents | Created `basket_count()` helper and displayed in navbar | I3-T10 | NFR1 | Basket status visible |
-| I3-C07 | Dynamic checkout rendering | Checkout previously static | Built basket items dynamically using helper function | I3-T11, I3-T12 | FR7 | Checkout reflects actual basket |
-| I3-C08 | Quantity increase control | Users needed control over basket | Added `/increase/<pid>` route | I3-T13 | FR7 | Quantity increases |
-| I3-C09 | Quantity decrease control | Needed safe quantity handling | Added `/decrease/<pid>` with minimum constraint | I3-T14 | FR7, NFR3 | Quantity does not drop below 1 |
-| I3-C10 | Remove item feature | Users needed ability to delete items | Added `/remove/<pid>` route | I3-T15 | FR7 | Items removed |
-| I3-C11 | Clear basket feature | Needed full reset functionality | Added `/clear` route and confirmation JS | I3-T16 | FR7 | Basket cleared |
-| I3-C12 | Dynamic total calculation | Checkout required realistic cost calculation | Calculated subtotal and total in helper function | I3-T17 | FR7 | Accurate totals |
-| I3-C13 | Delivery vs collection option | Improve realism of checkout | Added dropdown and JS toggle | I3-T18, I3-T19 | FR7, NFR1 | Options selectable |
-| I3-C14 | Basic validation | Prevent invalid input submission | Added server-side checks in checkout route | I3-T20–I3-T23 | NFR1, NFR3 | Errors handled |
-| I3-C15 | Order submission flow | Needed completion of user journey | Cleared basket and generated order reference | I3-T24, I3-T25 | FR7 | Order simulated |
-| I3-C16 | Feedback messaging system | Improve usability and clarity | Used session-based messages for actions | I3-T26–I3-T28 | NFR1 | User feedback improved |
-| I3-C17 | Homepage improvements | Homepage previously disconnected from flow | Added supplier links to products | I3-T29 | FR1 | Navigation improved |
-| I3-C18 | Empty basket handling | Poor UX when basket empty | Added conditional display and navigation link | I3-T30 | NFR1 | Clear guidance |
-| I3-C19 | CSS expansion | Existing styles insufficient | Added styles for badge, messages, layout | I3-T31 | NFR8 | Improved UI |
-| I3-C20 | JavaScript usability | Improve interaction flow | Added confirm clear + delivery toggle | I3-T32–I3-T33 | NFR1, NFR3 | Better usability |
+## Iteration 3 Change Log (Accurate to Implementation)
+
+| Change ID | What was changed | Why it was changed | How it was implemented | Linked Tests | Requirement Links | Result |
+|----------|------------------|--------------------|------------------------|-------------|------------------|--------|
+| I3-C01 | Supplier filtering | Iteration 2 lacked meaningful navigation | Added `supplier` query param in `/products` route | I3-T01–I3-T04 | FR5, FR6 | Products filtered correctly |
+| I3-C02 | Supplier name display | Improve usability | Derived supplier name in route and passed to template | I3-T05 | NFR1 | Supplier context visible |
+| I3-C03 | Session basket system | Needed persistent user interaction | Used Flask session dictionary to store basket items | I3-T06–I3-T08 | FR6, FR7 | Basket persists per session |
+| I3-C04 | Add-to-basket | Core feature missing | POST route `/add/<pid>` with validation check | I3-T09–I3-T11 | FR6 | Items added correctly |
+| I3-C05 | Supplier context retention | Navigation flow issue | Hidden input passed supplier ID on add | I3-T12 | FR5 | User remains on supplier view |
+| I3-C06 | Basket count badge | Improve feedback | `basket_count()` helper injected globally | I3-T13 | NFR1 | Basket visible in UI |
+| I3-C07 | Dynamic checkout rendering | Replace static layout | Created `build_basket()` helper function | I3-T14–I3-T16 | FR7 | Checkout reflects real data |
+| I3-C08 | Quantity increase | Needed control | `/increase/<pid>` route updates session | I3-T17 | FR7 | Quantity increases |
+| I3-C09 | Quantity decrease | Prevent invalid states | `/decrease/<pid>` with minimum of 1 | I3-T18 | FR7, NFR3 | Safe decrease logic |
+| I3-C10 | Remove item | Improve usability | `/remove/<pid>` route removes item | I3-T19 | FR7 | Items removed |
+| I3-C11 | Clear basket | Reset functionality | `/clear` route clears session basket | I3-T20 | FR7 | Basket cleared |
+| I3-C12 | Total calculation | Needed realistic checkout | Calculated totals dynamically in helper | I3-T21 | FR7 | Accurate totals |
+| I3-C13 | Delivery vs collection | Improve realism | Dropdown + JS toggle for address field | I3-T22–I3-T23 | FR7, NFR1 | Works correctly |
+| I3-C14 | Basic validation | Prevent empty submissions | `.strip()` used and conditional checks | I3-T24–I3-T27 | NFR1 | Basic validation works |
+| I3-C15 | Order submission | Complete flow | Clears basket and generates random ref | I3-T28–I3-T29 | FR7 | Order simulated |
+| I3-C16 | Message system | Improve UX | Session-based messaging system | I3-T30–I3-T32 | NFR1 | Feedback displayed |
+| I3-C17 | Homepage linking | Improve navigation | Supplier links added to homepage | I3-T33 | FR1 | Flow improved |
+| I3-C18 | Empty state handling | Improve UX | Conditional template rendering | I3-T34 | NFR1 | Clear empty state |
+| I3-C19 | JS improvements | Improve usability | Added confirm + toggle logic | I3-T35–I3-T36 | NFR1 | Works correctly |
+| I3-C20 | CSS expansion | Support new features | Added styles without removing old CSS | I3-T37 | NFR8 | UI consistent |
 
 
 ## Iteration 3 Development Log
 
 | Entry ID | Task | Description | Reason | Outcome |
 |----------|------|------------|--------|--------|
-| I3-D01 | Product redesign | Structured product data with supplier links | Improve realism | Products linked correctly |
-| I3-D02 | Supplier filtering | Implemented filtering logic | Improve navigation | Connected pages |
-| I3-D03 | Basket system | Created session basket structure | Add core functionality | Basket persists |
-| I3-D04 | Add-to-basket | Implemented POST route | Enable interaction | Items added |
-| I3-D05 | Basket UI | Added basket count badge | Improve UX | Visible feedback |
-| I3-D06 | Checkout rebuild | Dynamic basket display | Replace static layout | Functional checkout |
-| I3-D07 | Quantity logic | Added increase/decrease routes | Improve control | Adjustable basket |
-| I3-D08 | Remove feature | Implemented remove route | Improve usability | Items removable |
-| I3-D09 | Clear basket | Added reset functionality | Improve UX | Basket cleared |
-| I3-D10 | Total calculation | Implemented total logic | Realistic checkout | Accurate totals |
-| I3-D11 | Checkout form | Added delivery + inputs | Improve realism | Better flow |
-| I3-D12 | Validation | Added server checks | Prevent errors | Stable system |
-| I3-D13 | Order submission | Added confirmation flow | Complete journey | Order simulated |
-| I3-D14 | Messaging system | Implemented feedback messages | Improve usability | Clear feedback |
-| I3-D15 | JS improvements | Added confirm + toggle | Improve UX | Better interaction |
-| I3-D16 | CSS improvements | Expanded styling | Support new features | Cleaner UI |
+| I3-D01 | Product data restructure | Linked products to suppliers | Enable filtering | Products now grouped |
+| I3-D02 | Supplier filtering | Implemented query-based filtering | Improve navigation | Working correctly |
+| I3-D03 | Basket system | Introduced session-based storage | Enable interaction | Basket persists |
+| I3-D04 | Add-to-basket | Built POST route | Core functionality | Works |
+| I3-D05 | Supplier context fix | Added hidden input | Prevent navigation break | Works |
+| I3-D06 | Basket count | Added global helper | Improve UX | Visible |
+| I3-D07 | Checkout rebuild | Dynamic rendering | Replace static design | Functional |
+| I3-D08 | Quantity controls | Added increase/decrease | Improve control | Works |
+| I3-D09 | Remove functionality | Added removal route | Improve UX | Works |
+| I3-D10 | Clear basket | Added clear route | Reset functionality | Works |
+| I3-D11 | Total calculation | Implemented dynamic totals | Realism | Accurate |
+| I3-D12 | Checkout form | Added inputs + method | Improve realism | Works |
+| I3-D13 | Validation | Added `.strip()` checks | Prevent empty input | Basic validation works |
+| I3-D14 | Order flow | Added confirmation + ref | Complete journey | Works |
+| I3-D15 | Message system | Added session messaging | Improve feedback | Works |
+| I3-D16 | JS improvements | Added confirm + toggle | Improve usability | Works |
+| I3-D17 | CSS additions | Extended styles | Support new UI | Maintains design |
+
+## Iteration 3 Testing Documentation (Full & Detailed)
+
+---
+
+## 1. Testing Overview
+
+### Purpose
+The purpose of testing in Iteration 3 is to verify that the newly implemented **core shopping journey** works correctly, including:
+
+- supplier browsing
+- product filtering
+- basket interaction
+- checkout flow
+- basic validation
+- user feedback
+
+Testing also evaluates how the system behaves under:
+- invalid input
+- extreme usage
+- malicious-style input
+- repeated interaction
+
+---
+
+## 2. Test Strategy
+
+Testing was conducted using:
+
+| Type | Purpose |
+|------|--------|
+| Functional | Ensure features work correctly |
+| Integration | Ensure pages and features connect properly |
+| Validation | Check handling of invalid input |
+| Usability | Evaluate user feedback and interaction clarity |
+| Reliability | Check stability over repeated use |
+| Extreme | Test edge cases and high usage |
+| Malicious | Test potentially harmful inputs |
+
+---
+
+## 3. Assumptions
+
+- System runs locally using Flask
+- Session storage is available
+- No database is used (session-only persistence)
+- No authentication required for checkout
+- Browser used: Chrome (primary), Edge (secondary)
+
+---
+
+# 4. DETAILED TEST CASES
+
+---
+
+## 4.1 Supplier & Product Browsing
+
+| ID | Type | Test | Steps | Input | Expected Result | Actual Result | Outcome | Notes |
+|----|------|------|-------|------|-----------------|---------------|---------|------|
+| I3-T01 | Normal | Select supplier from homepage | Click Supplier A link | N/A | Only Supplier A products shown | Correct products shown | Pass | Works as intended |
+| I3-T02 | Normal | View all products | Navigate to `/products` | N/A | All products displayed | All products shown | Pass | |
+| I3-T03 | Integration | Supplier → products flow | Click supplier → products page | N/A | Correct page transition | Correct | Pass | |
+| I3-T04 | Erroneous | Invalid supplier ID | `/products?supplier=z` | "z" | No products shown, no crash | Page loads empty | Pass | No error message shown |
+| I3-T05 | Malicious | Script injection in URL | `/products?supplier=<script>` | Script string | No execution | Rendered as text | Pass | Relies on escaping |
+| I3-T06 | Extreme | Long query string | `/products?supplier=` + 500 chars | Long string | Page loads safely | No crash | Pass | |
+
+---
+
+## 4.2 Add-to-Basket Functionality
+
+| ID | Type | Test | Steps | Input | Expected | Actual | Outcome | Notes |
+|----|------|------|------|------|----------|--------|--------|------|
+| I3-T07 | Normal | Add single item | Click add on Apples | p1 | Item added qty=1 | Correct | Pass | |
+| I3-T08 | Normal | Add multiple items | Add Apples + Bread | p1, p3 | Both items present | Correct | Pass | |
+| I3-T09 | Normal | Add duplicate item | Add Apples twice | p1 | Qty increases | Qty=2 | Pass | |
+| I3-T10 | Integration | Add from supplier page | Add item on filtered page | supplier=a | Redirect keeps filter | Correct | Pass | |
+| I3-T11 | Erroneous | Invalid product ID | POST `/add/invalid` | invalid | No crash | No item added | Pass | Silent failure |
+| I3-T12 | Malicious | Tampered product ID | Change hidden input | invalid | No crash | No item added | Pass | |
+| I3-T13 | Extreme | Rapid adds | Click add 20 times | p1 | Qty increases | Works | Pass | |
+
+---
+
+## 4.3 Basket Display & Badge
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome | Notes |
+|----|------|------|-------|----------|--------|--------|------|
+| I3-T14 | Normal | Basket badge updates | Add item | Count increases | Correct | Pass | |
+| I3-T15 | Normal | Badge reflects qty | Add item twice | Shows total qty | Correct | Pass | |
+| I3-T16 | Integration | Badge vs checkout | Compare both | Match | Correct | Pass | |
+| I3-T17 | Reliability | Refresh page | Reload after add | Basket persists | Correct | Pass | |
+
+---
+
+## 4.4 Quantity Controls
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome | Notes |
+|----|------|------|-------|----------|--------|--------|------|
+| I3-T18 | Normal | Increase quantity | Click + | Qty +1 | Correct | Pass | |
+| I3-T19 | Normal | Decrease quantity | Click - | Qty -1 | Correct | Pass | |
+| I3-T20 | Extreme | Reduce to minimum | Keep clicking - | Stops at 1 | Correct | Pass | |
+| I3-T21 | Erroneous | Invalid decrease call | Remove item then decrease | Safe | No crash | Pass | |
+
+---
+
+## 4.5 Remove & Clear Basket
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome | Notes |
+|----|------|------|-------|----------|--------|--------|------|
+| I3-T22 | Normal | Remove item | Click remove | Item gone | Correct | Pass | |
+| I3-T23 | Normal | Clear basket | Click clear | Basket empty | Correct | Pass | |
+| I3-T24 | JS | Confirm clear | Click clear | Prompt appears | Correct | Pass | |
+| I3-T25 | JS | Cancel clear | Cancel prompt | No change | Correct | Pass | |
+| I3-T26 | Reliability | Repeated actions | Add/remove repeatedly | Stable | Stable | Pass | |
+
+---
+
+## 4.6 Checkout & Total Calculation
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome | Notes |
+|----|------|------|-------|----------|--------|--------|------|
+| I3-T27 | Normal | Total calculation | Add items | Correct sum | Correct | Pass | |
+| I3-T28 | Integration | Remove updates total | Remove item | Total updates | Correct | Pass | |
+| I3-T29 | Extreme | Large basket | Add many items | Total correct | Correct | Pass | |
+
+---
+
+## 4.7 Checkout Validation
+
+| ID | Type | Test | Steps | Input | Expected | Actual | Outcome | Notes |
+|----|------|------|-------|------|----------|--------|--------|------|
+| I3-T30 | Normal | Valid delivery | Name + address | Valid | Order success | Pass | |
+| I3-T31 | Normal | Valid collection | Name only | Valid | Order success | Pass | |
+| I3-T32 | Erroneous | Empty basket | Submit empty | Error | Correct | Pass | |
+| I3-T33 | Erroneous | Missing name | "" | Error | Correct | Pass | |
+| I3-T34 | Erroneous | Missing address | delivery + blank | Error | Correct | Pass | |
+| I3-T35 | Erroneous | Spaces only | "   " | Treated empty | Correct | Pass | |
+
+---
+
+## 4.8 Extreme Input Testing
+
+| ID | Type | Test | Input | Expected | Actual | Outcome |
+|----|------|------|------|----------|--------|--------|
+| I3-T36 | Extreme | Long name | 200 chars | No crash | Works | Pass |
+| I3-T37 | Extreme | Long address | 300 chars | No crash | Works | Pass |
+| I3-T38 | Extreme | Rapid order attempts | Click repeatedly | Stable | Stable | Pass |
+
+---
+
+## 4.9 Malicious Input Testing
+
+| ID | Type | Test | Input | Expected | Actual | Outcome | Notes |
+|----|------|------|------|----------|--------|--------|------|
+| I3-T39 | Malicious | Script injection | `<script>` | No execution | Escaped | Pass | |
+| I3-T40 | Malicious | SQL-like input | `'; DROP TABLE` | No crash | Treated as text | Pass | |
+| I3-T41 | Malicious | HTML injection | `<b>text</b>` | Safe display | Rendered safely | Pass | |
+
+---
+
+## 4.10 JavaScript Behaviour
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome |
+|----|------|------|-------|----------|--------|--------|
+| I3-T42 | Normal | Menu toggle | Click menu | Opens/closes | Correct | Pass |
+| I3-T43 | Normal | Delivery toggle | Switch option | Address disabled | Correct | Pass |
+
+---
+
+## 4.11 Empty State Testing
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome |
+|----|------|------|-------|----------|--------|--------|
+| I3-T44 | Normal | Empty basket view | Open checkout empty | Message shown | Correct | Pass |
+| I3-T45 | Integration | Browse from empty | Click browse | Redirect works | Correct | Pass |
+
+---
+
+## 4.12 Reliability Testing
+
+| ID | Type | Test | Steps | Expected | Actual | Outcome |
+|----|------|------|-------|----------|--------|--------|
+| I3-T46 | Reliability | Refresh pages | Refresh repeatedly | No crash | Stable | Pass |
+| I3-T47 | Reliability | Long session use | Use system repeatedly | Stable | Stable | Pass |
+
+---
+
+## 5. Limitations Identified
+
+- No database persistence
+- No authentication system
+- Validation is basic only
+- Invalid product IDs handled silently
+- Security relies on framework escaping rather than custom sanitisation
+
+---
+
+## 6. Conclusion
+
+Iteration 3 testing confirms that the system successfully delivers a functional shopping flow. The application performs correctly under normal usage and remains stable under erroneous, extreme, and malicious-style testing. While limitations remain, these are appropriate for the stage of development and provide clear direction for Iteration 4 improvements.
+
 
 
 
