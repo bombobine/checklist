@@ -249,6 +249,393 @@ Iteration 3 testing confirms that the system successfully delivers a functional 
 
 
 
+IT 4
+
+## Iteration 4 Change Log
+
+| Change ID | What was changed | Why it was changed | How it was implemented | Linked Requirements | Result |
+|---|---|---|---|---|---|
+| I4-C01 | Added SQLite database connection | The system needed to move beyond hardcoded-only behaviour and become a more realistic application | Added `sqlite3` connection helper with `get_db()` and a database file `glh.db` | FR2, FR3, FR4, FR5, FR6, FR7, NFR3 | Database support added successfully |
+| I4-C02 | Added database initialisation | The system needed tables for users, products and orders | Added `init_db()` with `CREATE TABLE IF NOT EXISTS` for `users`, `products`, and `orders` | FR2, FR4, FR6, FR7, NFR3 | Required tables are created automatically |
+| I4-C03 | Added predefined supplier accounts | Supplier access needed to be controlled rather than open to anybody registering | Inserted predefined supplier rows into the `users` table when none existed | FR4, NFR6 | Supplier accounts are available without allowing supplier signup |
+| I4-C04 | Restricted registration to normal users only | Prevent unauthorised supplier dashboard access | Register route always inserts new accounts with `is_supplier = 0` | FR2, FR4, NFR6 | New users cannot self-register as suppliers |
+| I4-C05 | Added login system | The system needed real user account access instead of placeholder pages only | Added `/login` route with database lookup by email and password and session storage | FR2, FR4 | Users can now log in |
+| I4-C06 | Added logout system | Logged-in users needed a way to end their session | Added `/logout` route which clears the session | FR2, NFR1 | Logout works correctly |
+| I4-C07 | Added supplier role checking | The dashboard must only be available to supplier accounts | Added `is_supplier()` helper and dashboard protection checks | FR4, NFR6 | Role-based access works |
+| I4-C08 | Added suppliers page route | Templates referenced a suppliers page and the app needed a working endpoint for it | Added `/suppliers` route that loads supplier accounts from the database | FR5 | Suppliers page now works |
+| I4-C09 | Added supplier-based product filtering | The products page needed to connect properly to supplier browsing | Updated `/products` route to optionally filter by supplier ID query string | FR5, FR6, NFR1 | Supplier links now change what products are shown |
+| I4-C10 | Added supplier name display on products page | Users needed to know which supplier they were currently browsing | Queried the selected supplier name and passed it to the template | FR5, NFR1 | Product context is clearer |
+| I4-C11 | Added session basket | Basket state needed to persist during browsing and checkout | Added `get_basket()` helper and stored basket data in `session["basket"]` | FR6, FR7, NFR3 | Basket now persists during the session |
+| I4-C12 | Added basket count indicator | Users needed clear basket feedback in the top bar | Added `basket_count()` helper and injected the value into templates with a context processor | FR6, NFR1 | Cart count is visible at all times |
+| I4-C13 | Added add-to-basket functionality | Products needed a working action rather than a static interface only | Added `/add_to_basket/<int:product_id>` route and linked form buttons from the products page | FR6, FR7 | Products can now be added to the basket |
+| I4-C14 | Preserved supplier context after adding items | Users should remain in the same supplier view after adding a product | Passed `supplier_id` as a hidden form value and redirected back to the filtered products page | FR5, FR6, NFR1 | Browsing flow is smoother |
+| I4-C15 | Added basket item building helper | Checkout needed to display real basket content from database product records | Added `build_basket_items()` to join basket session data with stored product data | FR7, NFR3 | Checkout now shows real basket data |
+| I4-C16 | Added quantity increase control | Basket editing needed to be possible in checkout | Added `/increase_quantity/<int:product_id>` route | FR7, NFR1 | Quantity can be increased |
+| I4-C17 | Added quantity decrease control | Users needed to reduce quantities safely | Added `/decrease_quantity/<int:product_id>` route with minimum handling | FR7, NFR1, NFR3 | Quantity can be reduced or removed safely |
+| I4-C18 | Added remove item control | Users needed to remove individual basket items | Added `/remove_item/<int:product_id>` route | FR7, NFR1 | Single items can be removed |
+| I4-C19 | Added clear basket function | Users needed to clear the whole basket quickly | Added `/clear_basket` route | FR7, NFR1 | Basket can be reset |
+| I4-C20 | Updated checkout to use basket contents | Checkout needed to become functional rather than placeholder-only | Updated `/checkout` to read real basket items and total | FR7 | Checkout now reflects actual user choices |
+| I4-C21 | Added order storage | Orders needed to be saved in the database for realism and supplier sales review | Inserted order rows into the `orders` table during checkout POST | FR7, FR8 | Orders are now stored |
+| I4-C22 | Added order reference output | Users needed visible order confirmation feedback | Generated a random GLH reference during checkout | FR7, NFR1 | Confirmation is clearer |
+| I4-C23 | Added supplier dashboard page | Suppliers needed a management area and sales visibility | Added `/dashboard` route and `dashboard.html` template | FR8 | Supplier dashboard exists and works |
+| I4-C24 | Added product creation in dashboard | Suppliers needed to add products through the interface | Dashboard POST inserts a product into the database with the supplier’s ID | FR8, FR6 | Suppliers can add products |
+| I4-C25 | Added product list in dashboard | Suppliers needed to see their own products | Queried products filtered by the logged-in supplier ID | FR8 | Supplier products are displayed |
+| I4-C26 | Added sales list in dashboard | Suppliers needed visibility of recorded orders | Queried orders and displayed them in dashboard | FR8 | Sales area is available |
+| I4-C27 | Restored more of the original wireframe-style UI | Earlier functional versions drifted too far from the design work | Reused Iteration 1/2 layout classes like `.home-grid`, `.two-col`, `.map-box`, `.row-item`, `.checkout-head`, `.checkout-row` | NFR1, NFR8 | Stronger design traceability restored |
+| I4-C28 | Kept supplier map pins only on the map | The original design used pins as part of the map section specifically | Used `.map-box` and `.pin` only in the supplier map area | NFR8 | Layout better matches the wireframe |
+| I4-C29 | Kept login/register accessible from navigation | Even if supplier access is controlled, authentication pages should stay visible and traceable | Included links in the shared dropdown navigation | FR2, FR4 | Feature scope remains visible in UI |
+| I4-C30 | Added JavaScript menu interaction and checkout helpers | The system needed more evidence of JavaScript use and improved UX | Used menu toggling, clear-basket confirmation, and delivery/address behaviour logic | NFR1, NFR3 | JS is now more meaningful and visible |
+
+
+
+
+
+
+## Iteration 4 Development Log
+
+| Entry ID | Task | Description of work completed | Reason for work | Outcome |
+|---|---|---|---|---|
+| I4-D01 | Database setup | Added SQLite support and created database helper | Move from prototype behaviour to a real application structure | Database file and connection established |
+| I4-D02 | Table creation | Added tables for users, products and orders | Needed persistent data storage | Core schema created |
+| I4-D03 | Supplier seed accounts | Inserted predefined supplier accounts during database initialisation | Control supplier access and avoid open supplier signup | Supplier logins available |
+| I4-D04 | Registration update | Restricted registration to normal users only | Improve role control and realism | Supplier sign-up prevented |
+| I4-D05 | Login system | Added working login route and session storage | Replace placeholder authentication | Login now functions |
+| I4-D06 | Logout system | Added session clearing route | Improve usability and control | Logout works |
+| I4-D07 | Suppliers route | Added working suppliers page route | Fix template routing and improve navigation flow | Suppliers page accessible |
+| I4-D08 | Product filtering | Added supplier-based filtering to products route | Strengthen supplier-to-product journey | Filtered browsing works |
+| I4-D09 | Basket helpers | Added session basket helpers and basket count | Support shopping flow | Basket persists and count displays |
+| I4-D10 | Add-to-basket feature | Connected product page button to basket route | Enable core shopping interaction | Users can add products |
+| I4-D11 | Basket context | Preserved supplier filter after adding items | Improve browsing continuity | Smoother user flow |
+| I4-D12 | Checkout rebuild | Updated checkout to use real basket items and totals | Replace placeholder checkout structure | Checkout became functional |
+| I4-D13 | Quantity controls | Added increase/decrease/remove/clear basket routes | Improve checkout usability | Basket editing works |
+| I4-D14 | Order storage | Inserted orders into database during checkout | Improve realism and support dashboard sales view | Orders saved |
+| I4-D15 | Dashboard creation | Built supplier dashboard route and template | Add supplier-side functionality | Dashboard available to suppliers |
+| I4-D16 | Product creation in dashboard | Added supplier form to insert new products | Let suppliers manage product list | New products can be created |
+| I4-D17 | Sales display in dashboard | Added order listing area | Give suppliers visibility of sales records | Sales info visible |
+| I4-D18 | UI restoration | Brought back more of the original wireframe structure | Improve traceability between design and implementation | Layout looks closer to design work |
+| I4-D19 | Shared layout alignment | Updated templates so routes, links and structure match properly | Prevent route/template mismatch errors | Templates and app now align better |
+| I4-D20 | JavaScript improvements | Added stronger JS for menu, confirm prompts and field toggling | Demonstrate more meaningful JavaScript use | Better UX and stronger evidence of JS skill |
+| I4-D21 | Debugging and route fixes | Fixed missing endpoints and template URL issues | Ensure app actually runs cleanly | Runtime errors reduced |
+| I4-D22 | Final review | Checked current iteration against previous iteration design and functionality | Ensure progression feels iterative rather than like a new project | Iteration 4 now reads as a true continuation |
+
+
+
+
+## Iteration 4 Testing Log
+
+---
+
+## 1. Testing Overview
+
+### Purpose
+Iteration 4 testing was carried out to confirm that the system had moved from a mainly functional prototype into a more complete application with:
+
+- database support
+- authentication
+- controlled supplier access
+- supplier product management
+- stored orders
+- restored wireframe-aligned UI
+- basket and checkout behaviour
+
+### Main testing goals
+- verify new backend/database functionality
+- verify supplier role restrictions
+- verify stored products and orders
+- verify basket and checkout flow
+- verify navigation and restored UI layout
+- test invalid, extreme and malicious inputs
+- identify remaining limitations for Iteration 5
+
+---
+
+## 2. Test Types Used
+
+| Test Type | Purpose |
+|---|---|
+| Functional | To check whether each feature works correctly |
+| Integration | To check whether connected features work together |
+| Validation | To check handling of empty/incorrect input |
+| Security / Access Control | To check supplier restriction and route protection |
+| Extreme | To test high or edge-case input |
+| Malicious | To test suspicious input safely |
+| Reliability | To check stability during repeated use |
+| Usability | To check visible feedback, navigation and clarity |
+
+---
+
+## 3. Test Environment
+
+| Area | Details |
+|---|---|
+| Application type | Flask web application |
+| Language | Python |
+| Database | SQLite |
+| Browser used primarily | Chrome |
+| Secondary browser check | Edge |
+| Run method | `python app.py` |
+| Data persistence | Local `glh.db` file |
+| Session handling | Flask session |
+
+---
+
+## 4. Detailed Test Cases
+
+### 4.1 Application Startup and Database Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T01 | Functional | Start app successfully | Run `python app.py` | Flask app starts without crashing | App started successfully | Pass | |
+| I4-T02 | Functional | Database file creation | Start app with no previous DB | `glh.db` is created automatically | DB file created | Pass | |
+| I4-T03 | Functional | Users table creation | Start app and inspect DB | `users` table exists | Table created | Pass | |
+| I4-T04 | Functional | Products table creation | Start app and inspect DB | `products` table exists | Table created | Pass | |
+| I4-T05 | Functional | Orders table creation | Start app and inspect DB | `orders` table exists | Table created | Pass | |
+| I4-T06 | Functional | Predefined supplier accounts seeded | Start app with empty DB | Supplier A/B/C rows inserted | Supplier accounts present | Pass | |
+| I4-T07 | Reliability | Restart app multiple times | Stop/start app repeatedly | App should still start and not duplicate suppliers endlessly | App remains stable; suppliers not duplicated after first insert | Pass | |
+
+---
+
+### 4.2 Navigation and Route Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T08 | Functional | Homepage route | Open `/` | Homepage loads | Homepage loaded | Pass | |
+| I4-T09 | Functional | Suppliers route | Open `/suppliers` | Suppliers page loads | Suppliers page loaded | Pass | |
+| I4-T10 | Functional | Products route | Open `/products` | Products page loads | Products page loaded | Pass | |
+| I4-T11 | Functional | Login route | Open `/login` | Login page loads | Login page loaded | Pass | |
+| I4-T12 | Functional | Register route | Open `/register` | Register page loads | Register page loaded | Pass | |
+| I4-T13 | Functional | Accessibility route | Open `/accessibility` | Accessibility page loads | Accessibility page loaded | Pass | |
+| I4-T14 | Functional | Checkout route (GET) | Open `/checkout` | Checkout page loads | Checkout page loaded | Pass | |
+| I4-T15 | Functional | Dashboard route as guest | Open `/dashboard` while not logged in | Redirect to login | Redirected correctly | Pass | |
+| I4-T16 | Integration | Dropdown navigation links | Use menu links to move through app | Correct pages open | Correct pages opened | Pass | |
+
+---
+
+### 4.3 Registration Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T17 | Normal | Register normal user | Name: Jane, Email: jane@test.com, Password: test123 | Account created and redirected to login | Worked correctly | Pass | |
+| I4-T18 | Erroneous | Missing name | Blank name, valid email/password | Error message shown | Error shown | Pass | |
+| I4-T19 | Erroneous | Missing email | Valid name, blank email | Error message shown | Error shown | Pass | |
+| I4-T20 | Erroneous | Missing password | Valid name/email, blank password | Error message shown | Error shown | Pass | |
+| I4-T21 | Erroneous | Duplicate email | Re-register same email | Error shown | Error shown | Pass | |
+| I4-T22 | Extreme | Very long name | 200+ characters | App should not crash; account may still create if unique | No crash | Pass | Validation still basic |
+| I4-T23 | Malicious | Script-like name input | `<script>alert(1)</script>` | Should not execute when later displayed | No script executed | Pass | Relies on framework escaping |
+| I4-T24 | Malicious | SQL-like email input | `test' OR 1=1 --` | Should not break query due to parameterisation | No crash / no bypass | Pass | |
+| I4-T25 | Security | Supplier signup blocked | Register normal account | Account created with `is_supplier = 0` only | Confirmed non-supplier | Pass | Important role control test |
+
+---
+
+### 4.4 Login and Session Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T26 | Normal | Valid customer login | Use registered user credentials | User logs in and returns home | Worked correctly | Pass | |
+| I4-T27 | Normal | Valid supplier login | `supplierA@glh.com` / `password123` | Supplier logs in | Worked correctly | Pass | |
+| I4-T28 | Erroneous | Wrong password | Correct email, wrong password | Error shown | Error shown | Pass | |
+| I4-T29 | Erroneous | Unknown email | Unknown email, any password | Error shown | Error shown | Pass | |
+| I4-T30 | Reliability | Repeat login/logout | Login then logout several times | Session remains stable | Stable | Pass | |
+| I4-T31 | Security | Logout clears session | Login then logout | User session removed | Correct | Pass | |
+| I4-T32 | Malicious | Script input on login form | `<script>` in email/password | No script execution, no crash | Safe handling | Pass | |
+
+---
+
+### 4.5 Supplier Role and Dashboard Access Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T33 | Security | Guest dashboard access blocked | Visit `/dashboard` while logged out | Redirect to login | Correct | Pass | |
+| I4-T34 | Security | Normal user dashboard access blocked | Login as customer then visit `/dashboard` | Redirect to home | Correct | Pass | |
+| I4-T35 | Normal | Supplier dashboard access allowed | Login as supplier then visit `/dashboard` | Dashboard loads | Correct | Pass | |
+| I4-T36 | Usability | Dashboard link only for suppliers | Open menu as customer vs supplier | Only supplier sees dashboard link | Correct | Pass | |
+| I4-T37 | Reliability | Dashboard after relogin | Supplier logout/login then revisit dashboard | Still works | Correct | Pass | |
+
+---
+
+### 4.6 Supplier Dashboard Product Management Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T38 | Normal | Add product as supplier | Name: Tomatoes, Price: 2.99 | Product stored in DB and shown in dashboard list | Worked correctly | Pass | |
+| I4-T39 | Normal | Add second product | Add another valid product | Product appears | Worked correctly | Pass | |
+| I4-T40 | Erroneous | Missing product name | Blank name, valid price | Product should not be added | Product not added | Pass | |
+| I4-T41 | Erroneous | Missing price | Valid name, blank price | Product should not be added | Product not added | Pass | |
+| I4-T42 | Erroneous | Non-numeric price | Name valid, price = abc | Product should not be added | Product not added | Pass | |
+| I4-T43 | Extreme | Large price value | Price = 999999.99 | App should not crash | No crash, product may add | Pass | Validation still basic |
+| I4-T44 | Malicious | Script-like product name | `<script>alert(1)</script>` | Should not execute when shown | Safe display | Pass | |
+| I4-T45 | Reliability | Add many products in sequence | Add 10+ valid products | Dashboard remains stable | Stable | Pass | |
+
+---
+
+### 4.7 Supplier/Product Browsing Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T46 | Normal | Homepage supplier link | Click supplier link from homepage | Filtered products page opens | Correct | Pass | |
+| I4-T47 | Normal | Suppliers page product link | Click product page link from suppliers page | Filtered products page opens | Correct | Pass | |
+| I4-T48 | Normal | View all products | Open `/products` without supplier | All products shown | Correct | Pass | |
+| I4-T49 | Normal | Filtered products | Open `/products?supplier=<id>` | Only that supplier’s products shown | Correct | Pass | |
+| I4-T50 | Erroneous | Invalid supplier ID in products URL | `/products?supplier=99999` | Page loads safely with no products | Correct | Pass | |
+| I4-T51 | Malicious | Script in supplier query string | `/products?supplier=<script>` | No script execution | Safe handling | Pass | |
+
+---
+
+### 4.8 Basket and Add-to-Basket Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T52 | Normal | Add one product | Click add button once | Basket count becomes 1 | Correct | Pass | |
+| I4-T53 | Normal | Add same product twice | Click add twice | Basket count increments correctly | Correct | Pass | |
+| I4-T54 | Normal | Add different products | Add multiple different products | Basket contains all items | Correct | Pass | |
+| I4-T55 | Integration | Keep supplier filter after adding | Add item while on filtered supplier page | Redirect stays in supplier context | Correct | Pass | |
+| I4-T56 | Reliability | Refresh after adding | Add items, refresh page | Basket remains in session | Correct | Pass | |
+| I4-T57 | Extreme | Add item many times | Add same product 20+ times | Basket count increases correctly | Correct | Pass | |
+| I4-T58 | Erroneous | Add invalid product ID manually | POST invalid product ID route | App should not crash | Safe handling | Pass | Invalid ID ignored by basket builder later |
+
+---
+
+### 4.9 Basket Count Indicator Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T59 | Normal | Basket count starts at 0 | New session | Count shows 0 | Correct | Pass | |
+| I4-T60 | Normal | Basket count updates after add | Add product | Count increases | Correct | Pass | |
+| I4-T61 | Integration | Basket count updates after remove | Remove item in checkout | Count decreases | Correct | Pass | |
+| I4-T62 | Integration | Basket count resets after clear basket | Clear basket | Count returns to 0 | Correct | Pass | |
+| I4-T63 | Integration | Basket count resets after order | Complete checkout | Count returns to 0 | Correct | Pass | |
+
+---
+
+### 4.10 Checkout and Basket Editing Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T64 | Normal | View checkout with basket items | Add items then open checkout | Items, price and quantity shown | Correct | Pass | |
+| I4-T65 | Normal | Increase quantity | Click `+` | Quantity increases | Correct | Pass | |
+| I4-T66 | Normal | Decrease quantity | Click `-` | Quantity decreases | Correct | Pass | |
+| I4-T67 | Normal | Decrease from 1 | Click `-` when quantity is 1 | Item removed | Correct | Pass | |
+| I4-T68 | Normal | Remove item | Click remove | Item removed | Correct | Pass | |
+| I4-T69 | Normal | Clear basket | Click clear basket | Basket empties | Correct | Pass | |
+| I4-T70 | JS / Usability | Clear basket confirm prompt | Click clear basket | Confirm dialog appears | Correct | Pass | |
+| I4-T71 | JS / Usability | Cancel clear basket | Cancel dialog | Basket remains unchanged | Correct | Pass | |
+| I4-T72 | Integration | Total updates after increase | Increase quantity | Total recalculates | Correct | Pass | |
+| I4-T73 | Integration | Total updates after decrease | Decrease quantity | Total recalculates | Correct | Pass | |
+| I4-T74 | Integration | Total updates after remove | Remove item | Total recalculates | Correct | Pass | |
+| I4-T75 | Integration | Total updates after clear | Clear basket | Total becomes 0 / empty state | Correct | Pass | |
+
+---
+
+### 4.11 Checkout Order Creation Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T76 | Normal | Checkout as logged-in customer | Add items, login, submit order | Order saved and reference shown | Correct | Pass | |
+| I4-T77 | Security | Checkout while logged out | Submit order POST while logged out | Redirect to login | Correct | Pass | |
+| I4-T78 | Erroneous | Checkout with empty basket | Submit checkout with no items | Error shown | Correct | Pass | |
+| I4-T79 | Integration | Order stored in DB | Complete order then inspect DB / dashboard | Order row exists | Correct | Pass | |
+| I4-T80 | Integration | Basket clears after order | Complete checkout | Basket emptied | Correct | Pass | |
+| I4-T81 | Reliability | Multiple orders in sequence | Complete several orders | All orders stored | Correct | Pass | |
+| I4-T82 | Extreme | Large basket checkout | Order with many items | App remains stable | Correct | Pass | |
+
+---
+
+### 4.12 Supplier Sales View Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T83 | Normal | Orders visible in dashboard | Supplier logs in after orders exist | Orders displayed in sales section | Correct | Pass | |
+| I4-T84 | Integration | Order reference visible in dashboard | Place order then check dashboard | Ref displayed | Correct | Pass | |
+| I4-T85 | Integration | Order total visible in dashboard | Place order then check dashboard | Total displayed | Correct | Pass | |
+| I4-T86 | Reliability | Dashboard remains stable with several orders | Create many orders | Dashboard still loads | Correct | Pass | |
+
+---
+
+### 4.13 Accessibility Page Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T87 | Normal | Accessibility page loads | Open `/accessibility` | Page loads | Correct | Pass | |
+| I4-T88 | Normal | Contrast preview toggle | Tick box | Visual preview class applied | Correct | Pass | |
+| I4-T89 | Normal | Keyboard preview toggle | Tick box | Visual preview class applied | Correct | Pass | |
+| I4-T90 | Limitation check | Save does not persist fully | Submit settings then reload | Settings are not permanently stored | Correct for current iteration | Pass | Left intentionally for Iteration 5 |
+
+---
+
+### 4.14 UI and Wireframe Traceability Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T91 | Usability | Homepage grid structure | Open homepage | Three-column structure visible | Correct | Pass | |
+| I4-T92 | Usability | Featured centre block present | Open homepage | Main image/content block visible | Correct | Pass | |
+| I4-T93 | Usability | Small lower cards present | Open homepage | Two small cards visible | Correct | Pass | |
+| I4-T94 | Usability | Supplier map section present | Open suppliers page | Map area visible | Correct | Pass | |
+| I4-T95 | Usability | Pins only on map | Open suppliers page | Pins remain inside map area | Correct | Pass | |
+| I4-T96 | Usability | Product page row layout | Open products page | Repeated row structure visible | Correct | Pass | |
+| I4-T97 | Usability | Checkout row/table structure | Open checkout with items | Table-like structure visible | Correct | Pass | |
+
+---
+
+### 4.15 Extreme and Malicious Input Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T98 | Extreme | Very long registration name | 200+ character name | No crash | No crash | Pass | |
+| I4-T99 | Extreme | Very long product name in dashboard | 200+ character product name | No crash | No crash | Pass | |
+| I4-T100 | Extreme | Very large numeric price | 999999999.99 | No crash | No crash | Pass | |
+| I4-T101 | Malicious | Script in registration name | `<script>alert(1)</script>` | Should not execute later | Safe display | Pass | Relies on Jinja escaping |
+| I4-T102 | Malicious | Script in product name | Add product with script-like name | Should not execute in dashboard/products page | Safe display | Pass | |
+| I4-T103 | Malicious | SQL-like login input | `' OR 1=1 --` in email/password | Should not bypass auth | No bypass | Pass | Parameterised query used |
+| I4-T104 | Malicious | HTML-like checkout input | `<b>test</b>` | Safe display or harmless text | Safe handling | Pass | |
+
+---
+
+### 4.16 Reliability and Repeat-Use Tests
+
+| Test ID | Type | Test | Steps / Input | Expected Result | Actual Result | Outcome | Notes |
+|---|---|---|---|---|---|---|---|
+| I4-T105 | Reliability | Repeat page switching | Move between all pages repeatedly | No crashes | Stable | Pass | |
+| I4-T106 | Reliability | Repeat basket edits | Add/remove/increase/decrease many times | Stable | Stable | Pass | |
+| I4-T107 | Reliability | Repeat login/logout cycles | Repeat several times | Stable | Stable | Pass | |
+| I4-T108 | Reliability | Repeat dashboard product adds | Add many products over time | Stable | Stable | Pass | |
+| I4-T109 | Reliability | Refresh during workflow | Refresh products, checkout, dashboard | Session/db remain consistent | Stable | Pass | |
+
+---
+
+## 5. Key Findings
+
+| Area | Finding |
+|---|---|
+| Authentication | Works for both customer and supplier roles |
+| Supplier access control | Dashboard restriction works correctly |
+| Database persistence | Users, products and orders are stored successfully |
+| Basket flow | Basket and checkout flow work correctly with session support |
+| Dashboard | Suppliers can add products and view sales data |
+| UI traceability | Layout is much closer to the original wireframe again |
+| Limitations | Password hashing, stronger validation, saved accessibility settings, product editing/deleting, and image handling are still missing |
+
+---
+
+## 6. Limitations Found During Testing
+
+- passwords are still stored as plain text
+- validation is still basic rather than production-ready
+- product edit/delete is not yet implemented
+- product images are still placeholders
+- basket is session-based rather than fully DB-backed
+- accessibility settings still do not persist fully
+- some malicious-style inputs are only safe because of framework escaping, not custom sanitisation
+
+---
+
+## 7. Conclusion
+
+Iteration 4 testing showed that the system now behaves like a real application rather than only a prototype. The main user journey, database storage, authentication, supplier role control, dashboard product management, and order storage all worked correctly under normal, erroneous, extreme, malicious-style, and repeat-use tests. At the same time, the testing clearly identified final improvements still suitable for Iteration 5, especially around accessibility, validation depth, security hardening, image handling, and final UI polish.
+
+
+
+
+
 
 
 
